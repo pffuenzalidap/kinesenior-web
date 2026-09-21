@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KineSenior | Kinesiología Digital para el Adulto Mayor</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+          },
+          colors: {
+            primary: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#0284c7',
+              600: '#0369a1',
+              700: '#075985',
+              800: '#0c4a6e',
+            },
+            mint: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+            },
+            sand: {
+              50: '#fbfbfa',
+              100: '#f4f3f0',
+              200: '#e7e5df',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Suavizado de desplazamiento y detalles de accesibilidad */
+    html {
+      scroll-behavior: smooth;
+    }
+    .text-balance {
+      text-wrap: balance;
+    }
+    /* Estilo de barra de scroll sutil */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+    .custom-pulse-badge {
+      animation: pulseGlow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: .85; transform: scale(1.03); }
+    }
+  </style>
+</head>
+<body class="bg-sand-50 text-slate-800 font-sans antialiased selection:bg-mint-100 selection:text-mint-800">
+
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Logotipo Inspirado en BOE con sello KineSenior -->
+      <a href="#" onclick="showSection('landing')" class="flex items-center gap-3 group">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-primary-600 to-mint-500 flex items-center justify-center text-white shadow-md shadow-primary-500/20 group-hover:scale-105 transition-transform">
+          <i data-lucide="activity" class="w-6 h-6"></i>
+        </div>
+        <div class="flex flex-col">
+          <div class="flex items-center gap-1.5">
+            <span class="text-2xl font-black tracking-tight text-slate-900">boe<span class="text-primary-600">kine</span></span>
+            <span class="text-[10px] uppercase tracking-wider font-extrabold px-1.5 py-0.5 rounded bg-mint-100 text-mint-700 border border-mint-200">Senior 60+</span>
+          </div>
+          <span class="text-[11px] font-medium text-slate-500 tracking-tight">Kinesiología digital para el adulto mayor</span>
+        </div>
+      </a>
+
+      <!-- Menú Desktop -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600">
+        <a href="#como-funciona" onclick="showSection('landing')" class="hover:text-primary-600 transition-colors">¿Cómo funciona?</a>
+        <a href="#patologias" onclick="showSection('landing')" class="hover:text-primary-600 transition-colors">Tratamientos</a>
+        <a href="#kinesiologos" onclick="showSection('landing')" class="hover:text-primary-600 transition-colors">Equipo Clínico</a>
+        <button onclick="showSection('portal')" class="hover:text-primary-600 transition-colors flex items-center gap-1.5 py-1 px-3 rounded-lg hover:bg-slate-100">
+          <i data-lucide="user" class="w-4 h-4 text-primary-600"></i> Portal Paciente
+        </button>
+        <button onclick="openArchitectureModal()" class="text-xs font-semibold px-2.5 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center gap-1">
+          <i data-lucide="layers" class="w-3.5 h-3.5 text-primary-600"></i> Arquitectura 100% Gratis
+        </button>
+      </nav>
+
+      <!-- Botones de Acción / Switch de Roles -->
+      <div class="flex items-center gap-3">
+        <!-- Switch Kinesiólogo / Paciente -->
+        <button onclick="toggleRole()" id="roleBadgeBtn" class="hidden sm:inline-flex items-center gap-1.5 text-xs font-bold py-2 px-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 shadow-sm transition-all" title="Cambiar a vista de kinesiólogo">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span id="roleLabel">Modo: Paciente</span>
+          <i data-lucide="arrow-left-right" class="w-3.5 h-3.5 text-slate-400"></i>
+        </button>
+
+        <button onclick="startQuestionnaire()" class="inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-primary-600 text-white font-bold text-sm sm:text-base px-5 py-2.5 rounded-xl shadow-lg shadow-slate-900/10 hover:shadow-primary-600/25 transition-all">
+          <span>Comenzar Evaluación</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <div class="bg-gradient-to-r from-primary-700 via-primary-600 to-mint-600 text-white py-2.5 px-4 text-center text-xs sm:text-sm font-medium shadow-inner">
+    <div class="max-w-6xl mx-auto flex items-center justify-center gap-2 flex-wrap">
+      <span class="inline-flex items-center gap-1 bg-white/20 px-2 py-0.5 rounded-md text-[11px] font-bold">FONASA / ISAPRE REEMBOLSABLE</span>
+      <span>No requieres salir de casa: Completa tu cuestionario y un kinesiólogo colegiado evaluará tu caso en menos de 24 hrs.</span>
+    </div>
+  </div>
+
+  <!-- MAIN CONTAINER (Controla secciones dinámicas: Landing, Cuestionario, Portal) -->
+  <main id="mainContainer">
+
+    <!-- ==========================================
+         SECCIÓN 1: LANDING PAGE ESTILO BOE
+         ========================================== -->
+    <div id="section-landing" class="block transition-opacity duration-300">
+      
+      <!-- HERO SECTION -->
+      <section class="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-28 border-b border-slate-200/80 bg-white">
+        <div class="absolute inset-0 bg-[radial-gradient(#0284c7_1px,transparent_1px)] [background-size:24px_24px] opacity-10 pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+            
+            <!-- Columna Izquierda: Copywriting Clínico de Alta Conversión -->
+            <div class="lg:col-span-7 flex flex-col items-start space-y-6">
+              
+              <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-mint-50 border border-mint-200 text-mint-800 text-xs font-semibold">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-mint-600"></i>
+                Kinesiólogos acreditados por la Superintendencia de Salud
+              </div>
+
+              <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.15] text-balance">
+                Recupera tu movilidad y autonomía <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-mint-600">sin salir de casa.</span>
+              </h1>
+
+              <p class="text-lg sm:text-xl text-slate-600 font-normal leading-relaxed text-balance max-w-2xl">
+                Completas nuestro cuestionario médico digital desde tu celular o computadora. Nuestro equipo de <strong>kinesiólogos geriátricos certificados</strong> analiza tu condición y emite una <strong>pauta de ejercicios segura, guiada y 100% personalizada</strong> para tu patología.
+              </p>
+
+              <!-- Beneficios rápidos con checklist -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full max-w-lg pt-2">
+                <div class="flex items-center gap-2 text-sm font-semibold text-slate-700">
+                  <div class="w-5 h-5 rounded-full bg-primary-100 text-primary-700 flex items-center justify-center shrink-0">✓</div>
+                  <span>Sin filas, traslados ni salas de espera</span>
+                </div>
+                <div class="flex items-center gap-2 text-sm font-semibold text-slate-700">
+                  <div class="w-5 h-5 rounded-full bg-primary-100 text-primary-700 flex items-center justify-center shrink-0">✓</div>
+                  <span>Ideal para el paciente o su cuidador/hijo</span>
+                </div>
+                <div class="flex items-center gap-2 text-sm font-semibold text-slate-700">
+                  <div class="w-5 h-5 rounded-full bg-primary-100 text-primary-700 flex items-center justify-center shrink-0">✓</div>
+                  <span>Videos y tiempos adaptados para adulto mayor</span>
+                </div>
+                <div class="flex items-center gap-2 text-sm font-semibold text-slate-700">
+                  <div class="w-5 h-5 rounded-full bg-primary-100 text-primary-700 flex items-center justify-center shrink-0">✓</div>
+                  <span>Acompañamiento continuo por WhatsApp</span>
+                </div>
+              </div>
+
+              <!-- Botones Call to Action -->
+              <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto pt-4">
+                <button onclick="startQuestionnaire()" class="bg-primary-600 hover:bg-primary-700 text-white font-bold text-lg px-8 py-4 rounded-2xl shadow-xl shadow-primary-600/25 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-3 text-center">
+                  <span>Iniciar Cuestionario Médico</span>
+                  <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                </button>
+
+                <button onclick="openWhatsAppModal('Hola, me gustaría consultar cómo funciona el servicio de pautas de kinesiología para un adulto mayor')" class="border-2 border-slate-300 hover:border-slate-400 bg-white text-slate-800 font-bold text-base px-6 py-4 rounded-2xl hover:bg-slate-50 transition-all flex items-center justify-center gap-2.5">
+                  <i data-lucide="message-circle" class="w-5 h-5 text-emerald-600"></i>
+                  <span>Hablar con un Kinesiólogo</span>
+                </button>
+              </div>
+
+              <!-- Indicador Social Proof -->
+              <div class="flex items-center gap-4 pt-2">
+                <div class="flex -space-x-2">
+                  <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&auto=format&fit=crop&q=80" alt="Dra. Valenzuela" class="w-10 h-10 rounded-full border-2 border-white object-cover" />
+                  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" alt="Klgo. Morales" class="w-10 h-10 rounded-full border-2 border-white object-cover" />
+                  <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&auto=format&fit=crop&q=80" alt="Klga. Tapia" class="w-10 h-10 rounded-full border-2 border-white object-cover" />
+                </div>
+                <div class="text-xs text-slate-600 font-medium">
+                  <div class="flex items-center text-amber-500">
+                    ★★★★★ <span class="text-slate-800 font-bold ml-1">4.9/5</span>
+                  </div>
+                  <span>Más de 1.450 adultos mayores rehabilitados en Chile</span>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Columna Derecha: Tarjeta Visual Interactiva (Preview Ficha y Pauta) -->
+            <div class="lg:col-span-5">
+              <div class="relative mx-auto max-w-md lg:max-w-none">
+                <!-- Marco de Tarjeta Médica Estilo BOE -->
+                <div class="bg-gradient-to-b from-white to-slate-50 rounded-3xl p-6 sm:p-7 shadow-2xl border border-slate-200/80 relative">
+                  
+                  <!-- Header Tarjeta -->
+                  <div class="flex items-center justify-between pb-5 border-b border-slate-200">
+                    <div class="flex items-center gap-3">
+                      <div class="w-12 h-12 rounded-2xl bg-primary-100 flex items-center justify-center text-primary-700">
+                        <i data-lucide="clipboard-check" class="w-6 h-6"></i>
+                      </div>
+                      <div>
+                        <div class="text-xs text-slate-500 font-medium">Pauta Digital Activa #BK-2026</div>
+                        <h4 class="text-base font-bold text-slate-900">Plan Movilidad & Artrosis Rodilla</h4>
+                      </div>
+                    </div>
+                    <span class="bg-mint-100 text-mint-800 text-xs font-bold px-2.5 py-1 rounded-full flex items-center gap-1">
+                      <span class="w-1.5 h-1.5 rounded-full bg-mint-500"></span> Validado
+                    </span>
+                  </div>
+
+                  <!-- Mini Pauta Ejemplo -->
+                  <div class="space-y-4 py-5">
+                    <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-between">
+                      <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-primary-50 flex items-center justify-center text-primary-600 font-bold text-sm">1</div>
+                        <div>
+                          <p class="text-sm font-bold text-slate-800">Extensión de cuádriceps sentado</p>
+                          <p class="text-xs text-slate-500">3 series × 10 reps (Silla firme)</p>
+                        </div>
+                      </div>
+                      <span class="text-xs font-semibold text-primary-700 bg-primary-50 px-2 py-1 rounded-lg">Fuerza</span>
+                    </div>
+
+                    <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-between">
+                      <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-mint-50 flex items-center justify-center text-mint-600 font-bold text-sm">2</div>
+                        <div>
+                          <p class="text-sm font-bold text-slate-800">Transferencia sedente a bipedestación</p>
+                          <p class="text-xs text-slate-500">2 series × 8 reps (Sin impulso brusco)</p>
+                        </div>
+                      </div>
+                      <span class="text-xs font-semibold text-mint-700 bg-mint-50 px-2 py-1 rounded-lg">Equilibrio</span>
+                    </div>
+
+                    <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-between">
+                      <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center text-amber-600 font-bold text-sm">3</div>
+                        <div>
+                          <p class="text-sm font-bold text-slate-800">Movilidad dorsiflexión de tobillo</p>
+                          <p class="text-xs text-slate-500">10 minutos de marcha asistida</p>
+                        </div>
+                      </div>
+                      <span class="text-xs font-semibold text-amber-700 bg-amber-50 px-2 py-1 rounded-lg">Movilidad</span>
+                    </div>
+                  </div>
+
+                  <!-- Footer Tarjeta con Kine Firma -->
+                  <div class="pt-4 border-t border-slate-200 flex items-center justify-between bg-slate-50/80 -mx-6 -mb-6 p-5 rounded-b-3xl">
+                    <div class="flex items-center gap-3">
+                      <div class="w-9 h-9 rounded-full bg-primary-600 text-white flex items-center justify-center font-bold text-xs">
+                        RN
+                      </div>
+                      <div>
+                        <p class="text-xs font-bold text-slate-900">Klgo. Rodrigo Navia</p>
+                        <p class="text-[11px] text-slate-500">Reg. SuperSalud N° 481920</p>
+                      </div>
+                    </div>
+                    <button onclick="showSection('portal')" class="text-xs font-bold text-primary-600 hover:text-primary-700 underline">
+                      Ver Portal Demo →
+                    </button>
+                  </div>
+
+                </div>
+
+                <!-- Floating mini badge -->
+                <div class="absolute -bottom-5 -left-5 bg-white border border-slate-200 py-2.5 px-4 rounded-2xl shadow-xl flex items-center gap-3">
+                  <div class="w-9 h-9 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-700">
+                    <i data-lucide="shield-check" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs font-bold text-slate-800">100% Personalizado</div>
+                    <div class="text-[11px] text-slate-500">Adecuado al dolor e historial</div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <section id="como-funciona" class="py-20 bg-slate-50 border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-xs font-bold uppercase tracking-widest text-primary-600 mb-2">Simplicidad Digital</h2>
+            <h3 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">¿Cómo funciona KineSenior?</h3>
+            <p class="mt-4 text-slate-600 text-lg">
+              El mismo modelo ágil de BOE aplicado a la kinesiología geriátrica: sin traslados, sin salas de espera y con respaldo profesional.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+            
+            <!-- Paso 1 -->
+            <div class="bg-white rounded-3xl p-8 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow relative">
+              <div class="w-14 h-14 rounded-2xl bg-primary-100 text-primary-700 font-black text-2xl flex items-center justify-center mb-6">
+                1
+              </div>
+              <h4 class="text-xl font-bold text-slate-900 mb-3">Cuestionario Médico</h4>
+              <p class="text-slate-600 leading-relaxed text-sm mb-4">
+                El paciente o un familiar completa el formulario clínico online. Nos indicas dolor, articulaciones afectadas, antecedentes de salud y metas de movilidad.
+              </p>
+              <div class="inline-flex items-center text-xs font-semibold text-primary-600 bg-primary-50 px-3 py-1.5 rounded-lg">
+                <i data-lucide="clock" class="w-3.5 h-3.5 mr-1.5"></i> Toma solo 4 minutos
+              </div>
+            </div>
+
+            <!-- Paso 2 -->
+            <div class="bg-white rounded-3xl p-8 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow relative">
+              <div class="w-14 h-14 rounded-2xl bg-mint-100 text-mint-700 font-black text-2xl flex items-center justify-center mb-6">
+                2
+              </div>
+              <h4 class="text-xl font-bold text-slate-900 mb-3">Evaluación Profesional</h4>
+              <p class="text-slate-600 leading-relaxed text-sm mb-4">
+                Un kinesiólogo colegiado especialista en geriatría revisa minuciosamente los síntomas, comorbilidades (hipertensión, artrosis, prótesis) y riesgo de caída.
+              </p>
+              <div class="inline-flex items-center text-xs font-semibold text-mint-700 bg-mint-50 px-3 py-1.5 rounded-lg">
+                <i data-lucide="award" class="w-3.5 h-3.5 mr-1.5"></i> Profesional Registrado
+              </div>
+            </div>
+
+            <!-- Paso 3 -->
+            <div class="bg-white rounded-3xl p-8 border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow relative">
+              <div class="w-14 h-14 rounded-2xl bg-slate-900 text-white font-black text-2xl flex items-center justify-center mb-6">
+                3
+              </div>
+              <h4 class="text-xl font-bold text-slate-900 mb-3">Pauta y Acompañamiento</h4>
+              <p class="text-slate-600 leading-relaxed text-sm mb-4">
+                Recibes tu diagnóstico kinesiológico y tu pauta con videos guiados, repeticiones seguras y contacto continuo por WhatsApp para resolver dudas y ajustar cargas.
+              </p>
+              <div class="inline-flex items-center text-xs font-semibold text-slate-700 bg-slate-100 px-3 py-1.5 rounded-lg">
+                <i data-lucide="smartphone" class="w-3.5 h-3.5 mr-1.5"></i> Portal Web + WhatsApp
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Banner de Acción Rápida -->
+          <div class="mt-12 text-center">
+            <button onclick="startQuestionnaire()" class="inline-flex items-center gap-2 bg-slate-900 hover:bg-primary-600 text-white font-bold px-7 py-3.5 rounded-xl transition-all shadow-md">
+              <i data-lucide="file-edit" class="w-5 h-5"></i>
+              <span>Completar Formulario Sin Costo Inicial</span>
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+      <section id="patologias" class="py-20 bg-white border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div class="flex flex-col md:flex-row md:items-end justify-between mb-14">
+            <div>
+              <h2 class="text-xs font-bold uppercase tracking-widest text-mint-600 mb-2">Especialidad Clínica</h2>
+              <h3 class="text-3xl sm:text-4xl font-black text-slate-900">Condiciones que tratamos a diario</h3>
+            </div>
+            <p class="mt-3 md:mt-0 text-slate-600 max-w-md text-sm sm:text-base">
+              Pautas adaptadas al rango de movimiento seguro, sin ejercicios en suelo que dificulten reincorporarse.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- Patología 1 -->
+            <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200 hover:border-primary-300 transition-all group">
+              <div class="w-12 h-12 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-primary-600 mb-4 group-hover:bg-primary-600 group-hover:text-white transition-colors">
+                <i data-lucide="shield" class="w-6 h-6"></i>
+              </div>
+              <h4 class="text-lg font-bold text-slate-900 mb-2">Artrosis de Rodilla y Cadera</h4>
+              <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                Reducción de rigidez articular matutina, fortalecimiento de cuádriceps e isquiotibiales para disminuir el dolor al caminar y subir escaleras.
+              </p>
+              <span class="text-xs font-bold text-primary-600 flex items-center gap-1">Pautas con bajo impacto articular →</span>
+            </div>
+
+            <!-- Patología 2 -->
+            <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200 hover:border-primary-300 transition-all group">
+              <div class="w-12 h-12 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-primary-600 mb-4 group-hover:bg-primary-600 group-hover:text-white transition-colors">
+                <i data-lucide="zap-off" class="w-6 h-6"></i>
+              </div>
+              <h4 class="text-lg font-bold text-slate-900 mb-2">Lumbago Crónico y Dolor de Espalda</h4>
+              <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                Reeducación postural suave en silla, estabilización lumbo-pélvica y descompresión para volver a estar de pie sin molestias punzantes.
+              </p>
+              <span class="text-xs font-bold text-primary-600 flex items-center gap-1">Ejercicios seguros en sedente →</span>
+            </div>
+
+            <!-- Patología 3 -->
+            <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200 hover:border-primary-300 transition-all group">
+              <div class="w-12 h-12 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-primary-600 mb-4 group-hover:bg-primary-600 group-hover:text-white transition-colors">
+                <i data-lucide="compass" class="w-6 h-6"></i>
+              </div>
+              <h4 class="text-lg font-bold text-slate-900 mb-2">Prevención de Caídas y Equilibrio</h4>
+              <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                Entrenamiento vestibular, propiocepción y apoyo plantar asistido con mesa o bastón para devolver la confianza en la marcha cotidiana.
+              </p>
+              <span class="text-xs font-bold text-primary-600 flex items-center gap-1">Mayor seguridad al desplazarse →</span>
+            </div>
+
+            <!-- Patología 4 -->
+            <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200 hover:border-primary-300 transition-all group">
+              <div class="w-12 h-12 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-primary-600 mb-4 group-hover:bg-primary-600 group-hover:text-white transition-colors">
+                <i data-lucide="trending-up" class="w-6 h-6"></i>
+              </div>
+              <h4 class="text-lg font-bold text-slate-900 mb-2">Sarcopenia y Pérdida de Fuerza</h4>
+              <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                Recuperación progresiva de masa muscular funcional utilizando el propio peso del cuerpo, bandas elásticas ligeras o pesos caseros seguros.
+              </p>
+              <span class="text-xs font-bold text-primary-600 flex items-center gap-1">Vitalidad en tareas cotidianas →</span>
+            </div>
+
+            <!-- Patología 5 -->
+            <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200 hover:border-primary-300 transition-all group">
+              <div class="w-12 h-12 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-primary-600 mb-4 group-hover:bg-primary-600 group-hover:text-white transition-colors">
+                <i data-lucide="heart-pulse" class="w-6 h-6"></i>
+              </div>
+              <h4 class="text-lg font-bold text-slate-900 mb-2">Rehabilitación Post-Quirúrgica o ACV</h4>
+              <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                Protocolos ambulatorios para prótesis de cadera/rodilla o secuelas motoras leves tras accidente cerebrovascular, con seguimiento clínico.
+              </p>
+              <span class="text-xs font-bold text-primary-600 flex items-center gap-1">Fase subaguda y mantenimiento →</span>
+            </div>
+
+            <!-- Patología 6 -->
+            <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200 hover:border-primary-300 transition-all group">
+              <div class="w-12 h-12 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-primary-600 mb-4 group-hover:bg-primary-600 group-hover:text-white transition-colors">
+                <i data-lucide="sparkles" class="w-6 h-6"></i>
+              </div>
+              <h4 class="text-lg font-bold text-slate-900 mb-2">Hombro Doloroso y Manguito Rotador</h4>
+              <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                Rutinas para recuperar el alcance de objetos en repisas altas, vestirse sin dolor y mantener la movilidad de hombros y escápula.
+              </p>
+              <span class="text-xs font-bold text-primary-600 flex items-center gap-1">Autonomía para el autocuidado →</span>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <section id="kinesiologos" class="py-20 bg-sand-100/60 border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-xs font-bold uppercase tracking-widest text-primary-700 mb-2 block">Cuerpo de Profesionales</span>
+            <h3 class="text-3xl sm:text-4xl font-black text-slate-900">Kinesiólogos con Especialización Geriátrica</h3>
+            <p class="mt-4 text-slate-600">
+              Cada pauta no es un algoritmo genérico: es planificada, revisada y firmada por profesionales con registro en la Superintendencia de Salud de Chile.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <!-- Kine 1 -->
+            <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm text-center">
+              <img src="https://images.unsplash.com/photo-1594824813596-f947ff1bf3d9?w=300&auto=format&fit=crop&q=80" alt="Klga. Camila Osorio" class="w-24 h-24 rounded-2xl mx-auto object-cover mb-4 border-2 border-primary-100" />
+              <h4 class="text-lg font-bold text-slate-900">Klga. Camila Osorio M.</h4>
+              <p class="text-xs text-primary-600 font-bold uppercase tracking-wider mb-2">Esp. Rehabilitación Geriátrica</p>
+              <p class="text-xs text-slate-500 mb-4">Universidad de Chile · Reg. SIS N° 451.290</p>
+              <p class="text-sm text-slate-600 italic">"Diseñamos rutinas donde la prioridad es la seguridad y evitar cualquier sobrecarga que agrave el dolor."</p>
+            </div>
+
+            <!-- Kine 2 -->
+            <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm text-center">
+              <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=300&auto=format&fit=crop&q=80" alt="Klgo. Rodrigo Navia" class="w-24 h-24 rounded-2xl mx-auto object-cover mb-4 border-2 border-mint-100" />
+              <h4 class="text-lg font-bold text-slate-900">Klgo. Rodrigo Navia G.</h4>
+              <p class="text-xs text-mint-700 font-bold uppercase tracking-wider mb-2">Esp. Kinesiología Traumatológica</p>
+              <p class="text-xs text-slate-500 mb-4">Pontificia Univ. Católica · Reg. SIS N° 481.920</p>
+              <p class="text-sm text-slate-600 italic">"El movimiento bien dosificado es la mejor medicina contra el desgaste articular y la inmovilidad."</p>
+            </div>
+
+            <!-- Kine 3 -->
+            <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm text-center">
+              <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=300&auto=format&fit=crop&q=80" alt="Klga. Andrea Sepúlveda" class="w-24 h-24 rounded-2xl mx-auto object-cover mb-4 border-2 border-primary-100" />
+              <h4 class="text-lg font-bold text-slate-900">Klga. Andrea Sepúlveda</h4>
+              <p class="text-xs text-primary-600 font-bold uppercase tracking-wider mb-2">Esp. Neurorehabilitación y Marcha</p>
+              <p class="text-xs text-slate-500 mb-4">Universidad de Concepción · Reg. SIS N° 512.441</p>
+              <p class="text-sm text-slate-600 italic">"Los familiares juegan un rol vital: nuestra plataforma les permite verificar que su ser querido haga sus ejercicios."</p>
+            </div>
+
+          </div>
+
+          <!-- Testimonio Destacado -->
+          <div class="mt-16 bg-gradient-to-r from-primary-900 to-slate-900 rounded-3xl p-8 sm:p-10 text-white shadow-xl relative overflow-hidden">
+            <div class="relative z-10 max-w-3xl">
+              <div class="flex items-center gap-1 text-amber-400 mb-4">★★★★★</div>
+              <p class="text-lg sm:text-xl font-medium leading-relaxed mb-6">
+                "Mi madre de 76 años tenía mucho miedo de caminar por su artrosis de cadera. Tras completar el cuestionario, el kinesiólogo Rodrigo nos mandó una rutina en silla que hacemos todos los días en 20 minutos. Ha recuperado su ánimo y ya no necesita que la sujetemos para levantarse."
+              </p>
+              <div class="flex items-center gap-3">
+                <div class="w-11 h-11 rounded-full bg-white/20 flex items-center justify-center font-bold text-white">
+                  MB
+                </div>
+                <div>
+                  <h5 class="text-base font-bold">Marcela Burgos (Hija de paciente María, 76 años)</h5>
+                  <p class="text-xs text-slate-300">Comuna de Las Condes, Santiago</p>
+                </div>
+              </div>
+            </div>
+            <div class="absolute right-0 bottom-0 opacity-10 translate-x-10 translate-y-10 pointer-events-none">
+              <i data-lucide="quote" class="w-72 h-72"></i>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="py-20 bg-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div class="inline-flex p-3 bg-mint-100 rounded-2xl text-mint-800 mb-4">
+            <i data-lucide="heart" class="w-8 h-8 text-mint-600"></i>
+          </div>
+          <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight mb-6">
+            Empieza hoy a cuidar la movilidad de quien más quieres
+          </h2>
+          <p class="text-lg text-slate-600 max-w-2xl mx-auto mb-8">
+            No necesitas desplazarte ni esperar semanas por una hora médica. Completa la ficha de salud digital ahora y recibe tu plan en menos de 24 horas.
+          </p>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <button onclick="startQuestionnaire()" class="w-full sm:w-auto bg-primary-600 hover:bg-primary-700 text-white font-bold text-lg px-8 py-4 rounded-2xl shadow-xl shadow-primary-600/20 transition-all flex items-center justify-center gap-2">
+              <i data-lucide="file-check-2" class="w-5 h-5"></i>
+              <span>Completar Formulario Médico</span>
+            </button>
+            <button onclick="openWhatsAppModal()" class="w-full sm:w-auto bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-base px-6 py-4 rounded-2xl transition-all flex items-center justify-center gap-2">
+              <i data-lucide="message-circle" class="w-5 h-5 text-emerald-600"></i>
+              <span>Resolver dudas por WhatsApp</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ==========================================
+         SECCIÓN 2: CUESTIONARIO MÉDICO DIGITAL MULTIPASOS
+         ========================================== -->
+    <div id="section-questionnaire" class="hidden py-10 sm:py-16 bg-slate-50 min-h-[85vh]">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Tarjeta del Cuestionario -->
+        <div class="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-xl relative">
+          
+          <!-- Encabezado de Progreso -->
+          <div class="mb-8">
+            <div class="flex items-center justify-between text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">
+              <span id="stepIndicator">Paso 1 de 4</span>
+              <span id="stepPercent">25% Completado</span>
+            </div>
+            <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+              <div id="progressBar" class="bg-gradient-to-r from-primary-600 to-mint-500 h-full rounded-full transition-all duration-300 w-1/4"></div>
+            </div>
+          </div>
+
+          <!-- FORMULARIO MULTIPASOS -->
+          <form id="kineForm" onsubmit="event.preventDefault(); nextStep();">
+            
+            <!-- PASO 1: Datos Básicos -->
+            <div id="formStep1" class="space-y-6">
+              <div>
+                <span class="inline-block px-2.5 py-1 rounded bg-primary-50 text-primary-700 text-xs font-bold mb-2">Paso 1: Identificación</span>
+                <h3 class="text-2xl font-black text-slate-900">¿Para quién es la evaluación kinesiológica?</h3>
+                <p class="text-sm text-slate-600 mt-1">Este formulario puede ser llenado directamente por el adulto mayor o por su hijo/cuidador.</p>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Nombre Completo del Paciente</label>
+                  <input type="text" id="patientName" required placeholder="Ej: María Elena Contreras" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none text-slate-800 text-base" value="María Elena Contreras" />
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Edad del Paciente</label>
+                  <input type="number" id="patientAge" min="50" max="105" required placeholder="Ej: 74" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none text-slate-800 text-base" value="74" />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Teléfono WhatsApp de Contacto</label>
+                  <input type="tel" id="patientPhone" required placeholder="+56 9 8765 4321" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none text-slate-800 text-base" value="+56 9 8765 4321" />
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">¿Quién responde este formulario?</label>
+                  <select id="submittedBy" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none text-slate-800 text-base">
+                    <option value="Hijo/a o Familiar">Hijo/a o Familiar del paciente</option>
+                    <option value="Propio Paciente">Yo mismo (Paciente Adulto Mayor)</option>
+                    <option value="Cuidador/a">Cuidador/a terapéutico</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="bg-blue-50/60 p-4 rounded-2xl border border-blue-100 flex items-start gap-3">
+                <i data-lucide="info" class="w-5 h-5 text-primary-600 shrink-0 mt-0.5"></i>
+                <p class="text-xs text-slate-600 leading-relaxed">
+                  Toda la información médica es confidencial y solo accesible por los kinesiólogos asignados para la emisión de la pauta clínica.
+                </p>
+              </div>
+            </div>
+
+            <!-- PASO 2: Zona del Cuerpo Afectada -->
+            <div id="formStep2" class="hidden space-y-6">
+              <div>
+                <span class="inline-block px-2.5 py-1 rounded bg-mint-50 text-mint-700 text-xs font-bold mb-2">Paso 2: Zona del Cuerpo</span>
+                <h3 class="text-2xl font-black text-slate-900">¿Dónde se concentra la mayor molestia o rigidez?</h3>
+                <p class="text-sm text-slate-600 mt-1">Selecciona la zona principal para que el kinesiólogo focalice la pauta terapéutica.</p>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="zoneSelectorContainer">
+                <label class="relative flex items-center p-4 rounded-2xl border-2 border-slate-200 hover:border-primary-500 cursor-pointer transition-all bg-white has-[:checked]:border-primary-600 has-[:checked]:bg-primary-50/40">
+                  <input type="radio" name="bodyZone" value="Rodilla / Cadera / Piernas" class="sr-only" checked />
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-primary-100 text-primary-700 flex items-center justify-center font-bold">🦴</div>
+                    <div>
+                      <h4 class="font-bold text-slate-900 text-sm">Rodilla / Cadera / Piernas</h4>
+                      <p class="text-xs text-slate-500">Artrosis, dolor al caminar, debilidad de piernas</p>
+                    </div>
+                  </div>
+                </label>
+
+                <label class="relative flex items-center p-4 rounded-2xl border-2 border-slate-200 hover:border-primary-500 cursor-pointer transition-all bg-white has-[:checked]:border-primary-600 has-[:checked]:bg-primary-50/40">
+                  <input type="radio" name="bodyZone" value="Espalda Lumbar / Columna" class="sr-only" />
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-primary-100 text-primary-700 flex items-center justify-center font-bold">⚡</div>
+                    <div>
+                      <h4 class="font-bold text-slate-900 text-sm">Espalda Lumbar / Columna</h4>
+                      <p class="text-xs text-slate-500">Lumbago, dolor al incorporarse, rigidez</p>
+                    </div>
+                  </div>
+                </label>
+
+                <label class="relative flex items-center p-4 rounded-2xl border-2 border-slate-200 hover:border-primary-500 cursor-pointer transition-all bg-white has-[:checked]:border-primary-600 has-[:checked]:bg-primary-50/40">
+                  <input type="radio" name="bodyZone" value="Equilibrio y Marcha (Caídas)" class="sr-only" />
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-primary-100 text-primary-700 flex items-center justify-center font-bold">🚶</div>
+                    <div>
+                      <h4 class="font-bold text-slate-900 text-sm">Equilibrio y Marcha (Miedo a Caer)</h4>
+                      <p class="text-xs text-slate-500">Inseguridad al caminar, tropiezos frecuentes</p>
+                    </div>
+                  </div>
+                </label>
+
+                <label class="relative flex items-center p-4 rounded-2xl border-2 border-slate-200 hover:border-primary-500 cursor-pointer transition-all bg-white has-[:checked]:border-primary-600 has-[:checked]:bg-primary-50/40">
+                  <input type="radio" name="bodyZone" value="Hombros y Brazos" class="sr-only" />
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-primary-100 text-primary-700 flex items-center justify-center font-bold">💪</div>
+                    <div>
+                      <h4 class="font-bold text-slate-900 text-sm">Hombros / Cuello / Brazos</h4>
+                      <p class="text-xs text-slate-500">Manguito rotador, dolor al peinarse o vestirse</p>
+                    </div>
+                  </div>
+                </label>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Comentarios específicos de la molestia:</label>
+                <textarea id="zoneNotes" rows="2" placeholder="Ej: Me duele más al levantarme de la cama en la mañana y al bajar escaleras..." class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-primary-500 outline-none text-slate-800 text-sm"></textarea>
+              </div>
+            </div>
+
+            <!-- PASO 3: Nivel de Dolor (EVA) y Limitación Funcional -->
+            <div id="formStep3" class="hidden space-y-6">
+              <div>
+                <span class="inline-block px-2.5 py-1 rounded bg-amber-50 text-amber-700 text-xs font-bold mb-2">Paso 3: Nivel de Dolor y Limitaciones</span>
+                <h3 class="text-2xl font-black text-slate-900">Intensidad del dolor y actividades diarias</h3>
+                <p class="text-sm text-slate-600 mt-1">Escala del 1 (molestia leve) al 10 (dolor severo incapacitante).</p>
+              </div>
+
+              <!-- Slider EVA -->
+              <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                <div class="flex justify-between items-center mb-3">
+                  <span class="text-sm font-bold text-slate-700">Nivel de Dolor Percibido:</span>
+                  <span id="evaValueDisplay" class="text-2xl font-black text-primary-600 bg-white px-3 py-1 rounded-xl shadow-sm border border-slate-200">6 / 10</span>
+                </div>
+                <input type="range" id="painSlider" min="1" max="10" value="6" oninput="updatePainDisplay(this.value)" class="w-full h-3 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-primary-600" />
+                <div class="flex justify-between text-[11px] font-semibold text-slate-500 mt-2">
+                  <span>1 - Leve</span>
+                  <span>4 - Moderado</span>
+                  <span>7 - Fuerte</span>
+                  <span>10 - Insoportable</span>
+                </div>
+              </div>
+
+              <!-- Limitaciones Funcionales Checkbox -->
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">¿Cuáles de estas actividades le cuestan actualmente?</label>
+                <div class="space-y-2.5">
+                  <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 cursor-pointer">
+                    <input type="checkbox" id="limitChair" checked class="w-4 h-4 text-primary-600 rounded" />
+                    <span class="text-sm text-slate-800 font-medium">Levantarse de una silla o del inodoro sin apoyarse con ambas manos</span>
+                  </label>
+                  <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 cursor-pointer">
+                    <input type="checkbox" id="limitWalk" checked class="w-4 h-4 text-primary-600 rounded" />
+                    <span class="text-sm text-slate-800 font-medium">Caminar 2 cuadras seguidas sin necesidad de detenerse por fatiga o dolor</span>
+                  </label>
+                  <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 cursor-pointer">
+                    <input type="checkbox" id="limitStairs" checked class="w-4 h-4 text-primary-600 rounded" />
+                    <span class="text-sm text-slate-800 font-medium">Subir o bajar un tramo de escaleras de manera fluida</span>
+                  </label>
+                  <label class="flex items-center gap-3 p-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 cursor-pointer">
+                    <input type="checkbox" id="limitBalance" class="w-4 h-4 text-primary-600 rounded" />
+                    <span class="text-sm text-slate-800 font-medium">Mantener el equilibrio al agacharse a recoger algo del suelo</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- PASO 4: Enfermedades de Base y Confirmación -->
+            <div id="formStep4" class="hidden space-y-6">
+              <div>
+                <span class="inline-block px-2.5 py-1 rounded bg-emerald-50 text-emerald-700 text-xs font-bold mb-2">Paso 4: Antecedentes Clínicos</span>
+                <h3 class="text-2xl font-black text-slate-900">Enfermedades de base y seguridad</h3>
+                <p class="text-sm text-slate-600 mt-1">Vital para que el kinesiólogo adapte ejercicios a la frecuencia cardíaca y tensión articular.</p>
+              </div>
+
+              <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                <label class="flex items-center gap-2.5 p-3 rounded-xl border border-slate-200 bg-white text-xs font-medium cursor-pointer">
+                  <input type="checkbox" id="histHta" checked class="w-4 h-4 text-primary-600 rounded" />
+                  <span>Hipertensión (HTA)</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-3 rounded-xl border border-slate-200 bg-white text-xs font-medium cursor-pointer">
+                  <input type="checkbox" id="histDiabetes" checked class="w-4 h-4 text-primary-600 rounded" />
+                  <span>Diabetes</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-3 rounded-xl border border-slate-200 bg-white text-xs font-medium cursor-pointer">
+                  <input type="checkbox" id="histOsteo" checked class="w-4 h-4 text-primary-600 rounded" />
+                  <span>Artrosis / Osteoporosis</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-3 rounded-xl border border-slate-200 bg-white text-xs font-medium cursor-pointer">
+                  <input type="checkbox" id="histProtesis" class="w-4 h-4 text-primary-600 rounded" />
+                  <span>Prótesis articular</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-3 rounded-xl border border-slate-200 bg-white text-xs font-medium cursor-pointer">
+                  <input type="checkbox" id="histCaidas" class="w-4 h-4 text-primary-600 rounded" />
+                  <span>Caída en últimos 6 meses</span>
+                </label>
+                <label class="flex items-center gap-2.5 p-3 rounded-xl border border-slate-200 bg-white text-xs font-medium cursor-pointer">
+                  <input type="checkbox" id="histCorazon" class="w-4 h-4 text-primary-600 rounded" />
+                  <span>Enfermedad cardíaca</span>
+                </label>
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Medicamentos de uso diario (opcional):</label>
+                <input type="text" id="medsInput" placeholder="Ej: Losartán 50mg, Metformina 850mg, Paracetamol SOS" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-2 focus:ring-primary-500 outline-none text-slate-800 text-sm" value="Losartán 50mg, Paracetamol SOS" />
+              </div>
+
+              <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-200 text-xs text-emerald-900 flex items-center gap-3">
+                <i data-lucide="check-check" class="w-6 h-6 text-emerald-600 shrink-0"></i>
+                <span>Al enviar, el kinesiólogo revisará tus antecedentes y generará tu pauta adaptada en el <strong>Portal del Paciente</strong>.</span>
+              </div>
+            </div>
+
+            <!-- BOTONES DE NAVEGACIÓN DEL CUESTIONARIO -->
+            <div class="flex items-center justify-between pt-6 border-t border-slate-200 mt-8">
+              <button type="button" id="prevStepBtn" onclick="prevStep()" class="hidden px-5 py-2.5 rounded-xl border border-slate-300 font-bold text-slate-700 hover:bg-slate-100 text-sm">
+                ← Volver
+              </button>
+              <div class="ml-auto flex items-center gap-3">
+                <button type="button" onclick="showSection('landing')" class="text-xs text-slate-500 hover:text-slate-700 underline font-semibold">
+                  Cancelar
+                </button>
+                <button type="submit" id="nextStepBtn" class="bg-primary-600 hover:bg-primary-700 text-white font-bold text-sm sm:text-base px-6 py-3 rounded-xl shadow-lg shadow-primary-600/20 transition-all flex items-center gap-2">
+                  <span>Siguiente</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+              </div>
+            </div>
+
+          </form>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ==========================================
+         SECCIÓN 3: PORTAL DEL PACIENTE / FICHA DIGITAL
+         ========================================== -->
+    <div id="section-portal" class="hidden py-8 sm:py-12 bg-sand-100/60 min-h-[85vh]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Header del Portal: Bienvenida y Estado del Plan -->
+        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm mb-8">
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+            
+            <div class="flex items-center gap-4">
+              <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-primary-600 to-mint-500 text-white flex items-center justify-center font-black text-2xl shadow-md">
+                MC
+              </div>
+              <div>
+                <div class="flex items-center gap-2 flex-wrap">
+                  <h2 class="text-2xl font-black text-slate-900" id="portalPatientName">María Elena Contreras</h2>
+                  <span class="bg-mint-100 text-mint-800 text-xs font-bold px-2.5 py-0.5 rounded-full border border-mint-200">
+                    Pauta Activa - Semana 1
+                  </span>
+                </div>
+                <p class="text-sm text-slate-500 mt-1">
+                  74 años · Ficha Digital #BK-7821 · Evaluada por <strong class="text-slate-700">Klgo. Rodrigo Navia</strong> (SIS #481920)
+                </p>
+              </div>
+            </div>
+
+            <!-- Acciones Rápidas del Portal -->
+            <div class="flex items-center gap-3 flex-wrap">
+              <button onclick="downloadFakePDF()" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 font-bold text-sm shadow-sm transition-all">
+                <i data-lucide="download" class="w-4 h-4 text-primary-600"></i>
+                <span>Descargar Pauta PDF</span>
+              </button>
+
+              <button onclick="openWhatsAppModal('Hola Kinesiólogo Rodrigo, soy la cuidadora de María Elena y tengo una duda sobre la serie 2 de ejercicios...')" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-md shadow-emerald-600/20 transition-all">
+                <i data-lucide="message-square" class="w-4 h-4"></i>
+                <span>Chat con mi Kinesiólogo</span>
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Layout Grid: Diagnóstico Clínico + Pauta Activa de Ejercicios -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          
+          <!-- COLUMNA IZQUIERDA (5 cols): Diagnóstico & Recomendaciones de Seguridad -->
+          <div class="lg:col-span-5 space-y-6">
+            
+            <!-- Tarjeta Diagnóstico Kinesiológico -->
+            <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                  <i data-lucide="stethoscope" class="w-5 h-5 text-primary-600"></i>
+                  Diagnóstico Funcional Kinesiológico
+                </h3>
+                <span class="text-[11px] font-bold uppercase tracking-wider bg-primary-50 text-primary-700 px-2 py-0.5 rounded">
+                  Aprobado
+                </span>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 mb-4">
+                <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Diagnóstico Principal</h4>
+                <p class="text-sm font-bold text-slate-800" id="portalDiagTitle">
+                  Gonartrosis bilateral grado II con predominio de déficit en cuádriceps y limitación en transferencias sedente-bípedo.
+                </p>
+              </div>
+
+              <div class="space-y-3 text-xs text-slate-600">
+                <div class="flex items-start gap-2">
+                  <span class="font-bold text-slate-700 shrink-0">Objetivo terapéutico:</span>
+                  <span>Mejorar la fuerza concéntrica/excéntrica de miembros inferiores para disminuir carga patelofemoral.</span>
+                </div>
+                <div class="flex items-start gap-2">
+                  <span class="font-bold text-slate-700 shrink-0">Frecuencia sugerida:</span>
+                  <span class="font-semibold text-primary-700">3 veces por semana (Días alternos: Lunes, Miércoles y Viernes).</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Precauciones Geriátricas Críticas -->
+            <div class="bg-amber-50/70 border border-amber-200 rounded-3xl p-6 shadow-sm">
+              <h4 class="text-sm font-bold text-amber-900 flex items-center gap-2 mb-3">
+                <i data-lucide="alert-triangle" class="w-5 h-5 text-amber-600"></i>
+                Precauciones y Criterios de Detención
+              </h4>
+              <ul class="space-y-2 text-xs text-amber-800/90 leading-relaxed">
+                <li class="flex items-start gap-2">
+                  <span class="font-bold">•</span>
+                  <span>Si el dolor articular sube de 5/10 durante el ejercicio, <strong>detenerse inmediatamente</strong>.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="font-bold">•</span>
+                  <span>Realizar todos los movimientos con una <strong>silla estable apoyada contra la pared</strong> para evitar deslizamientos.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="font-bold">•</span>
+                  <span>Monitorear mareos o falta de aire. Tomar 2 vasos de agua antes de la sesión.</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Registro de Síntomas Rápido -->
+            <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm">
+              <h4 class="text-sm font-bold text-slate-900 mb-2">¿Cómo te sentiste hoy tras la rutina?</h4>
+              <p class="text-xs text-slate-500 mb-3">Tu kinesiólogo revisará tus respuestas para ajustar los ejercicios.</p>
+              
+              <div class="grid grid-cols-3 gap-2 mb-4">
+                <button onclick="logFeedback('Bien y sin dolor')" class="p-2.5 rounded-xl border border-slate-200 hover:border-mint-500 hover:bg-mint-50 text-center text-xs font-semibold text-slate-700 transition-all">
+                  😊 Muy bien
+                </button>
+                <button onclick="logFeedback('Cansancio normal')" class="p-2.5 rounded-xl border border-slate-200 hover:border-amber-500 hover:bg-amber-50 text-center text-xs font-semibold text-slate-700 transition-all">
+                  😐 Algo cansado
+                </button>
+                <button onclick="logFeedback('Molestia articular')" class="p-2.5 rounded-xl border border-slate-200 hover:border-rose-500 hover:bg-rose-50 text-center text-xs font-semibold text-slate-700 transition-all">
+                  😣 Con molestia
+                </button>
+              </div>
+              <div id="feedbackNotice" class="hidden text-xs text-mint-800 bg-mint-100 p-2.5 rounded-xl text-center font-bold">
+                ¡Gracias! Feedback registrado y notificado al kinesiólogo.
+              </div>
+            </div>
+
+          </div>
+
+          <!-- COLUMNA DERECHA (7 cols): Pauta Interactiva de Ejercicios Guiados -->
+          <div class="lg:col-span-7 space-y-6">
+            
+            <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm">
+              
+              <div class="flex items-center justify-between pb-4 border-b border-slate-200 mb-6">
+                <div>
+                  <h3 class="text-xl font-bold text-slate-900">Pauta Guiada: Sesión de Hoy</h3>
+                  <p class="text-xs text-slate-500 mt-0.5">Sigue los videos interactivos y marca los completados</p>
+                </div>
+                <div class="text-right">
+                  <span class="text-xs text-slate-500 block font-medium">Progreso de la sesión</span>
+                  <span id="sessionProgressText" class="text-base font-black text-primary-600">0 de 3 hechos</span>
+                </div>
+              </div>
+
+              <!-- Lista de Ejercicios Interactivos -->
+              <div class="space-y-6" id="exerciseList">
+                
+                <!-- EJERCICIO 1 -->
+                <div class="border border-slate-200 rounded-2xl p-5 hover:border-slate-300 transition-all bg-slate-50/50" id="ex-card-1">
+                  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div class="flex items-start gap-3.5">
+                      <div class="w-12 h-12 rounded-2xl bg-primary-100 text-primary-700 flex items-center justify-center font-black text-lg shrink-0">
+                        1
+                      </div>
+                      <div>
+                        <h4 class="text-base font-bold text-slate-900">Extensión isométrica de cuádriceps en silla</h4>
+                        <p class="text-xs text-slate-500 mt-1">Fortalece la cara anterior del muslo protegiendo la rótula.</p>
+                        
+                        <div class="flex items-center gap-3 mt-2 text-xs font-semibold text-slate-600">
+                          <span class="bg-white px-2.5 py-1 rounded-lg border border-slate-200">3 series × 10 reps</span>
+                          <span class="bg-white px-2.5 py-1 rounded-lg border border-slate-200">Descanso: 45 seg</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Botón de Completar / Demo Video -->
+                    <div class="flex sm:flex-col items-center sm:items-end justify-between gap-2 shrink-0">
+                      <button onclick="toggleExercise(1)" id="btn-ex-1" class="px-4 py-2 rounded-xl border-2 border-slate-300 bg-white hover:bg-emerald-50 hover:border-emerald-500 text-slate-700 font-bold text-xs flex items-center gap-1.5 transition-all">
+                        <i data-lucide="circle" class="w-4 h-4"></i>
+                        <span>Marcar Hecho</span>
+                      </button>
+                      <button onclick="playExerciseDemo('Extensión de Cuádriceps', 'Siéntate derecho en una silla con respaldo. Estira una pierna al frente sosteniéndola 3 segundos arriba con la punta del pie hacia ti. Baja suavemente.')" class="text-[11px] font-bold text-primary-600 hover:underline">
+                        Ver Instrucción Técnica →
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- EJERCICIO 2 -->
+                <div class="border border-slate-200 rounded-2xl p-5 hover:border-slate-300 transition-all bg-slate-50/50" id="ex-card-2">
+                  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div class="flex items-start gap-3.5">
+                      <div class="w-12 h-12 rounded-2xl bg-mint-100 text-mint-700 flex items-center justify-center font-black text-lg shrink-0">
+                        2
+                      </div>
+                      <div>
+                        <h4 class="text-base font-bold text-slate-900">Transferencia sedente a bipedestación (Sit-to-Stand)</h4>
+                        <p class="text-xs text-slate-500 mt-1">Entrenamiento funcional para pararse del sillón sin ayuda de terceros.</p>
+                        
+                        <div class="flex items-center gap-3 mt-2 text-xs font-semibold text-slate-600">
+                          <span class="bg-white px-2.5 py-1 rounded-lg border border-slate-200">2 series × 8 repeticiones</span>
+                          <span class="bg-white px-2.5 py-1 rounded-lg border border-slate-200">Velocidad controlada</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="flex sm:flex-col items-center sm:items-end justify-between gap-2 shrink-0">
+                      <button onclick="toggleExercise(2)" id="btn-ex-2" class="px-4 py-2 rounded-xl border-2 border-slate-300 bg-white hover:bg-emerald-50 hover:border-emerald-500 text-slate-700 font-bold text-xs flex items-center gap-1.5 transition-all">
+                        <i data-lucide="circle" class="w-4 h-4"></i>
+                        <span>Marcar Hecho</span>
+                      </button>
+                      <button onclick="playExerciseDemo('Levantarse de la Silla', 'Cruza tus brazos sobre el pecho o apoya ligeramente tus manos en tus muslos. Inclina el tronco hacia adelante desde la cadera y elévate sin impulso brusco. Vuelve a sentarte suavemente.')" class="text-[11px] font-bold text-primary-600 hover:underline">
+                        Ver Instrucción Técnica →
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- EJERCICIO 3 -->
+                <div class="border border-slate-200 rounded-2xl p-5 hover:border-slate-300 transition-all bg-slate-50/50" id="ex-card-3">
+                  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div class="flex items-start gap-3.5">
+                      <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center font-black text-lg shrink-0">
+                        3
+                      </div>
+                      <div>
+                        <h4 class="text-base font-bold text-slate-900">Elevación de talones con apoyo firme (Gemelos)</h4>
+                        <p class="text-xs text-slate-500 mt-1">Mejora el despegue del pie al caminar y la estabilidad del tobillo.</p>
+                        
+                        <div class="flex items-center gap-3 mt-2 text-xs font-semibold text-slate-600">
+                          <span class="bg-white px-2.5 py-1 rounded-lg border border-slate-200">2 series × 12 reps</span>
+                          <span class="bg-white px-2.5 py-1 rounded-lg border border-slate-200">Apoyo en mesa o respaldo</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="flex sm:flex-col items-center sm:items-end justify-between gap-2 shrink-0">
+                      <button onclick="toggleExercise(3)" id="btn-ex-3" class="px-4 py-2 rounded-xl border-2 border-slate-300 bg-white hover:bg-emerald-50 hover:border-emerald-500 text-slate-700 font-bold text-xs flex items-center gap-1.5 transition-all">
+                        <i data-lucide="circle" class="w-4 h-4"></i>
+                        <span>Marcar Hecho</span>
+                      </button>
+                      <button onclick="playExerciseDemo('Elevación de Talones', 'Ponte de pie detrás de una silla firme sujetándote con ambas manos. Elévate sobre la punta de los dedos lentamente, mantén 2 segundos y desciende sin dejar caer los talones de golpe.')" class="text-[11px] font-bold text-primary-600 hover:underline">
+                        Ver Instrucción Técnica →
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Banner de Felicitación / Completitud -->
+              <div id="sessionCompletedBanner" class="hidden mt-6 p-5 rounded-2xl bg-gradient-to-r from-emerald-500 to-mint-600 text-white text-center shadow-lg">
+                <h4 class="text-lg font-black">🎉 ¡Excelente trabajo, María Elena!</h4>
+                <p class="text-xs text-emerald-100 mt-1">Completaste tu sesión del día de forma segura. Tu kinesiólogo ha recibido tu registro de adherencia.</p>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ==========================================
+         SECCIÓN 4: VISTA KINESIÓLOGO (PANEL CLÍNICO DEMO)
+         ========================================== -->
+    <div id="section-kine-admin" class="hidden py-10 bg-slate-100 min-h-[85vh]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-100 text-primary-800 text-xs font-bold mb-2">
+              <i data-lucide="lock" class="w-3.5 h-3.5"></i> Vista Profesional Kinesiólogo
+            </div>
+            <h2 class="text-3xl font-black text-slate-900">Bandeja de Cuestionarios y Pautas Emitidas</h2>
+            <p class="text-sm text-slate-600 mt-1">Revisa las fichas médicas enviadas por los pacientes y emite sus pautas de ejercicios.</p>
+          </div>
+          <button onclick="toggleRole()" class="self-start sm:self-auto bg-slate-900 text-white font-bold text-xs px-4 py-2.5 rounded-xl hover:bg-slate-800 transition-all">
+            Volver a Vista Paciente
+          </button>
+        </div>
+
+        <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+          <div class="p-6 border-b border-slate-200 flex items-center justify-between flex-wrap gap-4">
+            <h3 class="font-bold text-slate-900 text-base">Pacientes en Espera de Pauta o Seguimiento</h3>
+            <span class="text-xs bg-emerald-100 text-emerald-800 font-bold px-3 py-1 rounded-full">2 Pacientes Activos</span>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-sm text-slate-600">
+              <thead class="bg-slate-50 text-xs uppercase font-bold text-slate-500 border-b border-slate-200">
+                <tr>
+                  <th class="px-6 py-4">Paciente & Edad</th>
+                  <th class="px-6 py-4">Zona / Dolor (EVA)</th>
+                  <th class="px-6 py-4">Comorbilidades</th>
+                  <th class="px-6 py-4">Estado</th>
+                  <th class="px-6 py-4 text-right">Acción Clínica</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200" id="adminPatientTable">
+                <!-- Fila 1: Paciente del Demo -->
+                <tr class="hover:bg-slate-50">
+                  <td class="px-6 py-4">
+                    <div class="font-bold text-slate-900">María Elena Contreras (74a)</div>
+                    <div class="text-xs text-slate-500">+56 9 8765 4321 · Llenado por Hija</div>
+                  </td>
+                  <td class="px-6 py-4">
+                    <span class="font-semibold text-slate-800">Rodilla / Cadera</span>
+                    <div class="text-xs text-rose-600 font-bold">Dolor EVA 6/10</div>
+                  </td>
+                  <td class="px-6 py-4">
+                    <span class="inline-block bg-slate-100 text-slate-700 text-xs px-2 py-0.5 rounded mr-1">HTA</span>
+                    <span class="inline-block bg-slate-100 text-slate-700 text-xs px-2 py-0.5 rounded">Artrosis</span>
+                  </td>
+                  <td class="px-6 py-4">
+                    <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-1 rounded-full">Pauta Emitida</span>
+                  </td>
+                  <td class="px-6 py-4 text-right">
+                    <button onclick="showSection('portal')" class="text-xs font-bold text-primary-600 hover:text-primary-800 hover:underline">
+                      Revisar Pauta →
+                    </button>
+                  </td>
+                </tr>
+
+                <!-- Fila 2: Caso pendiente -->
+                <tr class="hover:bg-slate-50">
+                  <td class="px-6 py-4">
+                    <div class="font-bold text-slate-900">Don Hernán Valdés (81a)</div>
+                    <div class="text-xs text-slate-500">+56 9 9123 4455 · Cuidador</div>
+                  </td>
+                  <td class="px-6 py-4">
+                    <span class="font-semibold text-slate-800">Columna Lumbar</span>
+                    <div class="text-xs text-amber-600 font-bold">Dolor EVA 4/10</div>
+                  </td>
+                  <td class="px-6 py-4">
+                    <span class="inline-block bg-slate-100 text-slate-700 text-xs px-2 py-0.5 rounded">Osteoporosis</span>
+                  </td>
+                  <td class="px-6 py-4">
+                    <span class="bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-1 rounded-full">Por Evaluar</span>
+                  </td>
+                  <td class="px-6 py-4 text-right">
+                    <button onclick="alertModal('Evaluación de Don Hernán', 'Emitir pauta personalizada de descompresión lumbar suave y transferencias seguras.')" class="text-xs font-bold bg-primary-600 text-white px-3 py-1.5 rounded-lg hover:bg-primary-700">
+                      Emitir Pauta
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800 text-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+      
+      <div class="space-y-4 md:col-span-2">
+        <div class="flex items-center gap-2 text-white">
+          <div class="w-8 h-8 rounded-xl bg-primary-600 flex items-center justify-center text-white">
+            <i data-lucide="activity" class="w-5 h-5"></i>
+          </div>
+          <span class="text-xl font-bold">boe<span class="text-primary-400">kine</span> Senior</span>
+        </div>
+        <p class="text-slate-400 text-xs leading-relaxed max-w-md">
+          Servicio digital de telerehabilitación y acondicionamiento motor para adultos mayores. Pautas elaboradas y supervisadas exclusivamente por kinesiólogos acreditados en la Superintendencia de Salud de Chile.
+        </p>
+        <p class="text-[11px] text-slate-500">
+          Santiago de Chile · Reembolsable con boleta de honorarios kine en Fonasa e Isapres.
+        </p>
+      </div>
+
+      <div>
+        <h5 class="text-white font-bold text-xs uppercase tracking-wider mb-3">Navegación</h5>
+        <ul class="space-y-2 text-xs">
+          <li><a href="#" onclick="showSection('landing')" class="hover:text-white">Inicio</a></li>
+          <li><a href="#como-funciona" onclick="showSection('landing')" class="hover:text-white">¿Cómo funciona?</a></li>
+          <li><a href="#patologias" onclick="showSection('landing')" class="hover:text-white">Tratamientos geriátricos</a></li>
+          <li><a href="#" onclick="showSection('portal')" class="hover:text-white">Portal del Paciente</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h5 class="text-white font-bold text-xs uppercase tracking-wider mb-3">Atención Clínica</h5>
+        <p class="text-xs text-slate-400 mb-2">Horario kinesiólogos: Lunes a Sábado de 08:30 a 20:00 hrs.</p>
+        <button onclick="openWhatsAppModal()" class="inline-flex items-center gap-2 bg-emerald-700 hover:bg-emerald-600 text-white font-bold text-xs px-4 py-2.5 rounded-xl transition-all">
+          <i data-lucide="message-circle" class="w-4 h-4"></i>
+          <span>WhatsApp de Consulta</span>
+        </button>
+      </div>
+
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 pt-6 border-t border-slate-800 text-xs text-center text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <span>© 2026 BoeKine Senior. Inspirado en la simpleza de BOE Telemedicina.</span>
+      <button onclick="openArchitectureModal()" class="text-primary-400 hover:underline font-semibold">
+        Ver Arquitectura Técnica 100% Gratuita (Vercel, Supabase, Cloudflare)
+      </button>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       WIDGET FLOTANTE DE WHATSAPP (Asistente Kinesiológico)
+       ========================================== -->
+  <div class="fixed bottom-6 right-6 z-50">
+    <!-- Botón Flotante con Badge de Kinesiólogo Online -->
+    <button onclick="toggleWhatsAppBox()" id="whatsappTriggerBtn" class="relative group flex items-center gap-3 bg-emerald-600 hover:bg-emerald-700 text-white p-3.5 sm:px-5 sm:py-3.5 rounded-full shadow-2xl hover:scale-105 transition-all focus:outline-none">
+      <span class="absolute -top-1 -right-1 flex h-4 w-4">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-4 w-4 bg-emerald-400 border-2 border-white"></span>
+      </span>
+      <i data-lucide="message-circle" class="w-6 h-6"></i>
+      <span class="hidden sm:inline-block font-bold text-sm">¿Dudas? Hablar con Kine</span>
+    </button>
+
+    <!-- Modal / Caja de Chat Rápida -->
+    <div id="whatsappModalBox" class="hidden absolute bottom-16 right-0 w-[340px] sm:w-[380px] bg-white rounded-3xl shadow-2xl border border-slate-200 overflow-hidden transform transition-all">
+      
+      <!-- Cabecera de Chat Kine -->
+      <div class="bg-emerald-700 text-white p-4 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="relative">
+            <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=100&auto=format&fit=crop&q=80" class="w-10 h-10 rounded-full object-cover border-2 border-white" alt="Klgo. Rodrigo" />
+            <span class="absolute bottom-0 right-0 w-3 h-3 bg-emerald-400 border-2 border-emerald-700 rounded-full"></span>
+          </div>
+          <div>
+            <h4 class="font-bold text-sm">Asistente Kinesiológico Boe</h4>
+            <p class="text-[11px] text-emerald-200">En línea · Klgo. Rodrigo Navia</p>
+          </div>
+        </div>
+        <button onclick="toggleWhatsAppBox()" class="text-emerald-200 hover:text-white">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Cuerpo del Chat -->
+      <div class="p-4 bg-slate-50 space-y-3 max-h-[300px] overflow-y-auto text-xs">
+        <div class="bg-white p-3 rounded-2xl rounded-tl-none border border-slate-200 shadow-sm max-w-[85%] text-slate-800 leading-relaxed">
+          ¡Hola! Soy Rodrigo, kinesiólogo de <strong>BoeKine</strong>. ¿En qué podemos ayudarte hoy?
+        </div>
+        
+        <div class="bg-white p-3 rounded-2xl rounded-tl-none border border-slate-200 shadow-sm max-w-[85%] text-slate-800 leading-relaxed">
+          Puedes iniciar tu cuestionario médico digital o hacer una pregunta rápida sobre patologías de tu familiar adulto mayor.
+        </div>
+      </div>
+
+      <!-- Preguntas Frecuentes Rápidas -->
+      <div class="p-3 bg-white border-t border-slate-100 flex flex-col gap-1.5">
+        <button onclick="sendQuickWhatsApp('Hola Rodrigo, quiero saber cuánto demora la entrega de la pauta.')" class="text-left text-xs text-slate-700 hover:bg-slate-100 p-2 rounded-xl border border-slate-200 transition-colors">
+          ⏱️ ¿Cuánto demora la emisión de la pauta?
+        </button>
+        <button onclick="sendQuickWhatsApp('Hola, quisiera saber si tienen convenio o boleta para reembolso con Fonasa e Isapre.')" class="text-left text-xs text-slate-700 hover:bg-slate-100 p-2 rounded-xl border border-slate-200 transition-colors">
+          🏥 ¿Es reembolsable en Fonasa o Isapre?
+        </button>
+      </div>
+
+      <!-- Input para Abrir WhatsApp Directo -->
+      <div class="p-3 bg-white border-t border-slate-200 flex items-center gap-2">
+        <input type="text" id="customWaMessage" placeholder="Escribe tu consulta aquí..." class="w-full text-xs px-3 py-2 rounded-xl border border-slate-300 focus:outline-none focus:ring-1 focus:ring-emerald-600" />
+        <button onclick="sendCustomWhatsApp()" class="bg-emerald-600 hover:bg-emerald-700 text-white p-2.5 rounded-xl">
+          <i data-lucide="send" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL: ARQUITECTURA 100% GRATUITA
+       ========================================== -->
+  <div id="archModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 shadow-2xl border border-slate-200">
+      
+      <div class="flex items-center justify-between pb-4 border-b border-slate-200 mb-6">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-2xl bg-primary-100 text-primary-700 flex items-center justify-center">
+            <i data-lucide="layers" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h3 class="text-lg font-black text-slate-900">Stack Tecnológico 100% Gratuito</h3>
+            <p class="text-xs text-slate-500">Cómo desplegar y operar esta plataforma a costo $0 CLP/USD</p>
+          </div>
+        </div>
+        <button onclick="closeArchitectureModal()" class="p-2 text-slate-400 hover:text-slate-700 rounded-xl">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="space-y-4 text-sm text-slate-600">
+        
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+          <h4 class="font-bold text-slate-900 flex items-center gap-2 mb-1">
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span> 1. Hosting Web & Servidor Frontend: Vercel o Netlify
+          </h4>
+          <p class="text-xs text-slate-600">
+            <strong>Plan Gratuito Permanente:</strong> Ofrece ancho de banda generoso (100GB/mes), certificados SSL HTTPS automáticos, CI/CD integrado con GitHub y dominio gratuito <em>tunombre.vercel.app</em>.
+          </p>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+          <h4 class="font-bold text-slate-900 flex items-center gap-2 mb-1">
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span> 2. Base de Datos y Autenticación: Supabase (PostgreSQL)
+          </h4>
+          <p class="text-xs text-slate-600">
+            <strong>Plan Gratuito:</strong> 500MB de base de datos relacional Postgres, hasta 50.000 usuarios activos mensuales con login por Email o SMS, 1GB de almacenamiento de archivos (para almacenar PDFs de pautas o fotos de recetas) y API REST/GraphQL automática.
+          </p>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+          <h4 class="font-bold text-slate-900 flex items-center gap-2 mb-1">
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span> 3. Asistente y Notificaciones WhatsApp: Enlaces Directos wa.me
+          </h4>
+          <p class="text-xs text-slate-600">
+            Para iniciar a costo cero sin pagar por la Cloud API de WhatsApp de Meta, se utilizan enlaces dinámicos <code>https://wa.me/569XXXXXXXX?text=...</code> pre-rellenados con el ID de ficha del paciente. El kinesiólogo usa WhatsApp Business (100% gratis) con respuestas rápidas y etiquetas de estado.
+          </p>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200">
+          <h4 class="font-bold text-slate-900 flex items-center gap-2 mb-1">
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span> 4. Formulario de Respaldo: Formspree o Resend Free
+          </h4>
+          <p class="text-xs text-slate-600">
+            <strong>Resend Free:</strong> 3.000 emails transaccionales al mes gratis para avisar al kinesiólogo cada vez que un paciente complete un cuestionario nuevo.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="mt-6 pt-4 border-t border-slate-200 text-right">
+        <button onclick="closeArchitectureModal()" class="bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs px-5 py-2.5 rounded-xl">
+          Entendido
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL GENERAL DE INSTRUCCIÓN TÉCNICA
+       ========================================== -->
+  <div id="generalModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-7 shadow-2xl border border-slate-200">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-200 mb-4">
+        <h4 class="font-bold text-base text-slate-900" id="modalTitle">Instrucción de Ejercicio</h4>
+        <button onclick="closeGeneralModal()" class="text-slate-400 hover:text-slate-700">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <div class="space-y-4">
+        <!-- Visual simulado de ejercicio para adulto mayor -->
+        <div class="w-full h-40 bg-slate-100 rounded-2xl flex flex-col items-center justify-center text-slate-400 border border-slate-200 p-4 text-center">
+          <i data-lucide="play-circle" class="w-12 h-12 text-primary-500 mb-2"></i>
+          <span class="text-xs font-semibold text-slate-600">Guía Clínica Guiada con Ritmo Lento</span>
+          <span class="text-[11px] text-slate-400">Postura recomendada: Espalda apoyada, movimientos suaves</span>
+        </div>
+        <p class="text-sm text-slate-700 leading-relaxed" id="modalBodyText">
+          Instrucciones detalladas del ejercicio.
+        </p>
+      </div>
+      <div class="mt-6 text-right">
+        <button onclick="closeGeneralModal()" class="bg-primary-600 hover:bg-primary-700 text-white font-bold text-xs px-5 py-2.5 rounded-xl">
+          Cerrar Instrucción
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Estado de la aplicación
+    const appState = {
+      currentRole: 'patient', // 'patient' o 'kinesiologist'
+      currentStep: 1,
+      totalSteps: 4,
+      completedExercises: [false, false, false],
+      patientData: {
+        name: 'María Elena Contreras',
+        age: 74,
+        phone: '+56 9 8765 4321',
+        submittedBy: 'Hijo/a o Familiar',
+        zone: 'Rodilla / Cadera / Piernas',
+        painLevel: 6,
+        zoneNotes: 'Dolor al pararse de la cama y rigidez matinal',
+        meds: 'Losartán 50mg, Paracetamol SOS'
+      }
+    };
+
+    // Al cargar la página inicializamos los iconos de Lucide
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+    });
+
+    // Control de Secciones (Landing, Cuestionario, Portal, Panel Kine)
+    function showSection(sectionId) {
+      const sections = ['landing', 'questionnaire', 'portal', 'kine-admin'];
+      sections.forEach(sec => {
+        const el = document.getElementById(`section-${sec}`);
+        if (el) el.classList.add('hidden');
+      });
+
+      const target = document.getElementById(`section-${sectionId}`);
+      if (target) {
+        target.classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      lucide.createIcons();
+    }
+
+    // Iniciar el Cuestionario
+    function startQuestionnaire() {
+      appState.currentStep = 1;
+      updateStepUI();
+      showSection('questionnaire');
+    }
+
+    // Navegación de Pasos del Formulario
+    function nextStep() {
+      if (appState.currentStep < appState.totalSteps) {
+        appState.currentStep++;
+        updateStepUI();
+      } else {
+        // Enviar Formulario y generar pauta
+        finishQuestionnaire();
+      }
+    }
+
+    function prevStep() {
+      if (appState.currentStep > 1) {
+        appState.currentStep--;
+        updateStepUI();
+      }
+    }
+
+    function updateStepUI() {
+      for (let i = 1; i <= appState.totalSteps; i++) {
+        const stepEl = document.getElementById(`formStep${i}`);
+        if (stepEl) {
+          if (i === appState.currentStep) {
+            stepEl.classList.remove('hidden');
+          } else {
+            stepEl.classList.add('hidden');
+          }
+        }
+      }
+
+      // Actualizar Barra de Progreso y Textos
+      const percent = Math.round((appState.currentStep / appState.totalSteps) * 100);
+      document.getElementById('stepIndicator').innerText = `Paso ${appState.currentStep} de ${appState.totalSteps}`;
+      document.getElementById('stepPercent').innerText = `${percent}% Completado`;
+      document.getElementById('progressBar').style.width = `${percent}%`;
+
+      // Botón volver
+      const prevBtn = document.getElementById('prevStepBtn');
+      if (appState.currentStep > 1) {
+        prevBtn.classList.remove('hidden');
+      } else {
+        prevBtn.classList.add('hidden');
+      }
+
+      // Botón siguiente / enviar
+      const nextBtn = document.getElementById('nextStepBtn');
+      if (appState.currentStep === appState.totalSteps) {
+        nextBtn.innerHTML = `<span>Generar Mi Ficha y Pauta</span> <i data-lucide="check" class="w-4 h-4"></i>`;
+      } else {
+        nextBtn.innerHTML = `<span>Siguiente</span> <i data-lucide="arrow-right" class="w-4 h-4"></i>`;
+      }
+      lucide.createIcons();
+    }
+
+    // Slider de Dolor EVA
+    function updatePainDisplay(val) {
+      document.getElementById('evaValueDisplay').innerText = `${val} / 10`;
+    }
+
+    // Finalización del cuestionario: Transición al Portal
+    function finishQuestionnaire() {
+      // Capturamos datos ingresados
+      const nameInput = document.getElementById('patientName').value.trim();
+      if (nameInput) appState.patientData.name = nameInput;
+
+      const ageInput = document.getElementById('patientAge').value;
+      if (ageInput) appState.patientData.age = ageInput;
+
+      const phoneInput = document.getElementById('patientPhone').value;
+      if (phoneInput) appState.patientData.phone = phoneInput;
+
+      const selectedZoneEl = document.querySelector('input[name="bodyZone"]:checked');
+      if (selectedZoneEl) appState.patientData.zone = selectedZoneEl.value;
+
+      appState.patientData.painLevel = document.getElementById('painSlider').value;
+
+      // Actualizamos textos del Portal
+      document.getElementById('portalPatientName').innerText = appState.patientData.name;
+      document.getElementById('portalDiagTitle').innerText = 
+        `Pauta clínica para ${appState.patientData.zone} (Dolor EVA ${appState.patientData.painLevel}/10). Enfoque en protección articular y estabilidad motora para ${appState.patientData.age} años.`;
+
+      // Redirigir al Portal del Paciente
+      showSection('portal');
+    }
+
+    // Lógica Interactiva de la Pauta de Ejercicios
+    function toggleExercise(num) {
+      const idx = num - 1;
+      appState.completedExercises[idx] = !appState.completedExercises[idx];
+      const isDone = appState.completedExercises[idx];
+
+      const btn = document.getElementById(`btn-ex-${num}`);
+      const card = document.getElementById(`ex-card-${num}`);
+
+      if (isDone) {
+        btn.innerHTML = `<i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i> <span class="text-emerald-700 font-bold">Completado</span>`;
+        btn.classList.add('bg-emerald-50', 'border-emerald-500');
+        card.classList.add('bg-emerald-50/30', 'border-emerald-300');
+      } else {
+        btn.innerHTML = `<i data-lucide="circle" class="w-4 h-4"></i> <span>Marcar Hecho</span>`;
+        btn.classList.remove('bg-emerald-50', 'border-emerald-500');
+        card.classList.remove('bg-emerald-50/30', 'border-emerald-300');
+      }
+
+      // Contador de progreso
+      const doneCount = appState.completedExercises.filter(Boolean).length;
+      document.getElementById('sessionProgressText').innerText = `${doneCount} de 3 hechos`;
+
+      // Banner final
+      const banner = document.getElementById('sessionCompletedBanner');
+      if (doneCount === 3) {
+        banner.classList.remove('hidden');
+      } else {
+        banner.classList.add('hidden');
+      }
+      lucide.createIcons();
+    }
+
+    // Modal de Ejercicios
+    function playExerciseDemo(title, description) {
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalBodyText').innerText = description;
+      document.getElementById('generalModal').classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function closeGeneralModal() {
+      document.getElementById('generalModal').classList.add('hidden');
+    }
+
+    // Feedback de Síntomas
+    function logFeedback(status) {
+      const notice = document.getElementById('feedbackNotice');
+      notice.classList.remove('hidden');
+      notice.innerText = `Registrado: "${status}". Información enviada a la ficha del kinesiólogo.`;
+      setTimeout(() => {
+        notice.classList.add('hidden');
+      }, 4000);
+    }
+
+    // Simulación de Descarga de PDF
+    function downloadFakePDF() {
+      alertModal('Pauta Kinesiológica Descargada', `Se ha generado ficticiamente el archivo: Pauta_BoeKine_${appState.patientData.name.replace(/\s+/g, '_')}.pdf con los ejercicios, repeticiones y advertencias clínicas para el paciente.`);
+    }
+
+    // Switch de Roles (Kinesiólogo vs Paciente)
+    function toggleRole() {
+      if (appState.currentRole === 'patient') {
+        appState.currentRole = 'kinesiologist';
+        document.getElementById('roleLabel').innerText = 'Modo: Kinesiólogo';
+        showSection('kine-admin');
+      } else {
+        appState.currentRole = 'patient';
+        document.getElementById('roleLabel').innerText = 'Modo: Paciente';
+        showSection('portal');
+      }
+    }
+
+    // Widget WhatsApp
+    function toggleWhatsAppBox() {
+      const box = document.getElementById('whatsappModalBox');
+      box.classList.toggle('hidden');
+      lucide.createIcons();
+    }
+
+    function openWhatsAppModal(defaultText = '') {
+      const box = document.getElementById('whatsappModalBox');
+      box.classList.remove('hidden');
+      if (defaultText) {
+        document.getElementById('customWaMessage').value = defaultText;
+      }
+      lucide.createIcons();
+    }
+
+    function sendQuickWhatsApp(msg) {
+      const encoded = encodeURIComponent(msg);
+      // Simula redirección o abre pestaña de WhatsApp
+      window.open(`https://wa.me/56987654321?text=${encoded}`, '_blank');
+    }
+
+    function sendCustomWhatsApp() {
+      const input = document.getElementById('customWaMessage');
+      const text = input.value.trim() || 'Hola, me comunico desde el sitio web de BoeKine para consultar por una pauta.';
+      sendQuickWhatsApp(text);
+      input.value = '';
+      toggleWhatsAppBox();
+    }
+
+    // Modales Informativos
+    function openArchitectureModal() {
+      document.getElementById('archModal').classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function closeArchitectureModal() {
+      document.getElementById('archModal').classList.add('hidden');
+    }
+
+    function alertModal(title, message) {
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalBodyText').innerText = message;
+      document.getElementById('generalModal').classList.remove('hidden');
+      lucide.createIcons();
+    }
+  </script>
+</body>
+</html>
