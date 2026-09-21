@@ -55,17 +55,17 @@
   <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       
-      <!-- Logotipo KineSenior -->
+      <!-- Logotipo KineSenior (Actualizado a Salud/Vitalidad) -->
       <a href="#" onclick="showSection('landing')" class="flex items-center gap-3 group shrink-0">
         <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-primary-600 to-mint-500 flex items-center justify-center text-white shadow-md shadow-primary-500/20 group-hover:scale-105 transition-transform">
-          <i data-lucide="accessibility" class="w-6 h-6"></i>
+          <i data-lucide="heart-pulse" class="w-6 h-6"></i>
         </div>
         <div class="flex flex-col justify-center">
           <div class="flex items-center gap-1.5 leading-none">
             <span class="text-2xl font-black tracking-tight text-slate-900">Kine<span class="text-primary-600">Senior</span></span>
             <span class="text-[10px] uppercase tracking-wider font-extrabold px-1.5 py-0.5 rounded bg-mint-100 text-mint-700 border border-mint-200">60+</span>
           </div>
-          <span class="text-[11px] font-medium text-slate-500 tracking-tight mt-1 leading-none">Kinesiología digital en casa</span>
+          <span class="text-[11px] font-medium text-slate-500 tracking-tight mt-1 leading-none">Vitalidad y movimiento en casa</span>
         </div>
       </a>
 
@@ -106,7 +106,7 @@
   <div class="bg-gradient-to-r from-primary-700 via-primary-600 to-mint-600 text-white py-2.5 px-4 text-center text-xs sm:text-sm font-medium shadow-inner">
     <div class="max-w-6xl mx-auto flex items-center justify-center gap-2 flex-wrap">
       <span class="inline-flex items-center gap-1 bg-white/20 px-2 py-0.5 rounded-md text-[11px] font-bold">FONASA / ISAPRE REEMBOLSABLE</span>
-      <span>No requieres salir de casa: Completa tu cuestionario y un kinesiólogo evaluará tu caso en 24 hrs.</span>
+      <span>No requieres salir de casa: Completa tu cuestionario gratuito y recibe un diagnóstico profesional.</span>
     </div>
   </div>
 
@@ -124,7 +124,7 @@
             <div class="lg:col-span-7 flex flex-col items-start space-y-6">
               <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-mint-50 border border-mint-200 text-mint-800 text-xs font-semibold">
                 <i data-lucide="check-circle-2" class="w-4 h-4 text-mint-600"></i>
-                Kinesiólogos acreditados por la Superintendencia de Salud
+                Evaluación inicial 100% gratuita
               </div>
 
               <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.15] text-balance">
@@ -132,41 +132,17 @@
               </h1>
 
               <p class="text-lg sm:text-xl text-slate-600 font-normal leading-relaxed text-balance max-w-2xl">
-                Completas nuestro cuestionario médico digital desde tu celular. Nuestro equipo de <strong>kinesiólogos geriátricos</strong> emite una <strong>pauta guiada y 100% personalizada</strong> para tu patología.
+                Completas nuestro cuestionario digital. Nuestros <strong>kinesiólogos geriátricos</strong> analizan tu caso gratis y te proponen un <strong>plan de rehabilitación 100% personalizado</strong> con videos, seguimiento y asistencia virtual.
               </p>
-
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full max-w-lg pt-2">
-                <div class="flex items-center gap-2 text-sm font-semibold text-slate-700">
-                  <div class="w-5 h-5 rounded-full bg-primary-100 text-primary-700 flex items-center justify-center shrink-0">✓</div>
-                  <span>Sin filas, traslados ni salas de espera</span>
-                </div>
-                <div class="flex items-center gap-2 text-sm font-semibold text-slate-700">
-                  <div class="w-5 h-5 rounded-full bg-primary-100 text-primary-700 flex items-center justify-center shrink-0">✓</div>
-                  <span>Ideal para el paciente o su cuidador/hijo</span>
-                </div>
-                <div class="flex items-center gap-2 text-sm font-semibold text-slate-700">
-                  <div class="w-5 h-5 rounded-full bg-primary-100 text-primary-700 flex items-center justify-center shrink-0">✓</div>
-                  <span>Videos adaptados para adulto mayor</span>
-                </div>
-                <div class="flex items-center gap-2 text-sm font-semibold text-slate-700">
-                  <div class="w-5 h-5 rounded-full bg-primary-100 text-primary-700 flex items-center justify-center shrink-0">✓</div>
-                  <span>Acompañamiento continuo por WhatsApp</span>
-                </div>
-              </div>
 
               <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto pt-4">
                 <button onclick="startQuestionnaire()" class="bg-primary-600 hover:bg-primary-700 text-white font-bold text-lg px-8 py-4 rounded-2xl shadow-xl shadow-primary-600/25 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-3">
-                  <span>Iniciar Cuestionario Médico</span>
+                  <span>Iniciar Triage Gratuito</span>
                   <i data-lucide="chevron-right" class="w-5 h-5"></i>
-                </button>
-                <button onclick="openWhatsAppModal()" class="border-2 border-slate-300 hover:border-slate-400 bg-white text-slate-800 font-bold text-base px-6 py-4 rounded-2xl hover:bg-slate-50 transition-all flex items-center justify-center gap-2.5">
-                  <i data-lucide="message-circle" class="w-5 h-5 text-emerald-600"></i>
-                  <span>Hablar con un Kinesiólogo</span>
                 </button>
               </div>
             </div>
 
-            <!-- Visual Interactivo Hero -->
             <div class="lg:col-span-5">
               <div class="relative mx-auto max-w-md lg:max-w-none">
                 <div class="bg-gradient-to-b from-white to-slate-50 rounded-3xl p-6 sm:p-7 shadow-2xl border border-slate-200/80 relative">
@@ -176,12 +152,12 @@
                         <i data-lucide="clipboard-check" class="w-6 h-6"></i>
                       </div>
                       <div>
-                        <div class="text-xs text-slate-500 font-medium">Pauta Digital Activa #KS-2026</div>
+                        <div class="text-xs text-slate-500 font-medium">Ejemplo Portal Paciente</div>
                         <h4 class="text-base font-bold text-slate-900">Plan Movilidad & Artrosis</h4>
                       </div>
                     </div>
                     <span class="bg-mint-100 text-mint-800 text-xs font-bold px-2.5 py-1 rounded-full flex items-center gap-1">
-                      <span class="w-1.5 h-1.5 rounded-full bg-mint-500"></span> Validado
+                      Premium
                     </span>
                   </div>
 
@@ -195,38 +171,19 @@
                         </div>
                       </div>
                     </div>
-                    <div class="p-3.5 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-between">
-                      <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-mint-50 flex items-center justify-center text-mint-600 font-bold text-sm">2</div>
-                        <div>
-                          <p class="text-sm font-bold text-slate-800">Transferencia sedente a bípedo</p>
-                          <p class="text-xs text-slate-500">2 series × 8 reps</p>
-                        </div>
-                      </div>
-                    </div>
                   </div>
 
                   <div class="pt-4 border-t border-slate-200 flex items-center justify-between bg-slate-50/80 -mx-6 -mb-6 p-5 rounded-b-3xl">
                     <div class="flex items-center gap-3">
-                      <div class="w-9 h-9 rounded-full bg-primary-600 text-white flex items-center justify-center font-bold text-xs">RN</div>
+                      <div class="w-9 h-9 rounded-full bg-primary-600 text-white flex items-center justify-center font-bold text-xs">AI</div>
                       <div>
-                        <p class="text-xs font-bold text-slate-900">Klgo. Rodrigo Navia</p>
-                        <p class="text-[11px] text-slate-500">Reg. SuperSalud N° 481920</p>
+                        <p class="text-xs font-bold text-slate-900">Asistente Virtual 24/7</p>
+                        <p class="text-[11px] text-slate-500">Respuestas y guía en vivo</p>
                       </div>
                     </div>
                     <button onclick="openLoginModal()" class="text-xs font-bold text-primary-600 hover:underline">
                       Ver Demo Portal →
                     </button>
-                  </div>
-                </div>
-
-                <div class="absolute -bottom-5 -left-5 bg-white border border-slate-200 py-2.5 px-4 rounded-2xl shadow-xl flex items-center gap-3">
-                  <div class="w-9 h-9 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-700">
-                    <i data-lucide="shield-check" class="w-5 h-5"></i>
-                  </div>
-                  <div>
-                    <div class="text-xs font-bold text-slate-800">100% Personalizado</div>
-                    <div class="text-[11px] text-slate-500">Adecuado al historial</div>
                   </div>
                 </div>
               </div>
@@ -236,77 +193,78 @@
         </div>
       </section>
 
-      <!-- SECCIÓN: CÓMO FUNCIONA -->
+      <!-- SECCIÓN: CÓMO FUNCIONA (Transparencia del negocio) -->
       <section id="como-funciona" class="py-20 bg-slate-50 border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center max-w-3xl mx-auto mb-16">
-            <h2 class="text-xs font-bold uppercase tracking-widest text-primary-600 mb-2">Simplicidad Digital</h2>
-            <h3 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">¿Cómo funciona KineSenior?</h3>
+            <h2 class="text-xs font-bold uppercase tracking-widest text-primary-600 mb-2">Transparencia y Claridad</h2>
+            <h3 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">El proceso hacia tu rehabilitación</h3>
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-white rounded-3xl p-8 border border-slate-200/80 shadow-sm relative">
-              <div class="w-14 h-14 rounded-2xl bg-primary-100 text-primary-700 font-black text-2xl flex items-center justify-center mb-6">1</div>
-              <h4 class="text-xl font-bold text-slate-900 mb-3">Cuestionario Médico</h4>
-              <p class="text-slate-600 text-sm mb-4">El paciente o familiar indica dolor, articulaciones afectadas y antecedentes de salud online.</p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm relative">
+              <div class="w-12 h-12 rounded-xl bg-primary-100 text-primary-700 font-black text-xl flex items-center justify-center mb-4">1</div>
+              <h4 class="text-base font-bold text-slate-900 mb-2">Cuestionario Gratis</h4>
+              <p class="text-slate-600 text-xs">Completas el formulario clínico digital indicando tus dolores y antecedentes médicos.</p>
             </div>
-            <div class="bg-white rounded-3xl p-8 border border-slate-200/80 shadow-sm relative">
-              <div class="w-14 h-14 rounded-2xl bg-mint-100 text-mint-700 font-black text-2xl flex items-center justify-center mb-6">2</div>
-              <h4 class="text-xl font-bold text-slate-900 mb-3">Evaluación Clínica</h4>
-              <p class="text-slate-600 text-sm mb-4">Un kinesiólogo certificado revisa los síntomas y riesgo de caídas para armar el plan.</p>
+            
+            <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm relative">
+              <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 font-black text-xl flex items-center justify-center mb-4">2</div>
+              <h4 class="text-base font-bold text-slate-900 mb-2">Evaluación Clínica</h4>
+              <p class="text-slate-600 text-xs">En <strong>2 a 3 días hábiles</strong>, un kinesiólogo colegiado revisa tu caso y emite un diagnóstico gratuito.</p>
             </div>
-            <div class="bg-white rounded-3xl p-8 border border-slate-200/80 shadow-sm relative">
-              <div class="w-14 h-14 rounded-2xl bg-slate-900 text-white font-black text-2xl flex items-center justify-center mb-6">3</div>
-              <h4 class="text-xl font-bold text-slate-900 mb-3">Pauta y Acompañamiento</h4>
-              <p class="text-slate-600 text-sm mb-4">Recibes tu pauta con videos guiados, repeticiones seguras y contacto continuo por WhatsApp.</p>
+            
+            <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm relative border-primary-300 bg-primary-50/30">
+              <div class="w-12 h-12 rounded-xl bg-mint-500 text-white font-black text-xl flex items-center justify-center mb-4"><i data-lucide="credit-card" class="w-5 h-5"></i></div>
+              <h4 class="text-base font-bold text-slate-900 mb-2">Pago y Activación</h4>
+              <p class="text-slate-600 text-xs">Si decides avanzar, pagas tu plan de forma segura en la web y se desbloquea tu cuenta.</p>
             </div>
-          </div>
-          <div class="mt-12 text-center">
-            <button onclick="startQuestionnaire()" class="inline-flex items-center gap-2 bg-slate-900 hover:bg-primary-600 text-white font-bold px-7 py-3.5 rounded-xl transition-all shadow-md">
-              <i data-lucide="file-edit" class="w-5 h-5"></i>
-              <span>Completar Formulario Sin Costo</span>
-            </button>
+            
+            <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm relative">
+              <div class="w-12 h-12 rounded-xl bg-slate-900 text-white font-black text-xl flex items-center justify-center mb-4">4</div>
+              <h4 class="text-base font-bold text-slate-900 mb-2">Rehabilitación</h4>
+              <p class="text-slate-600 text-xs">Accedes a tu pauta de ejercicios, registro de progreso y consultas al Asistente Virtual 24/7.</p>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- SECCIÓN: TRATAMIENTOS -->
+      <!-- SECCIÓN: TRATAMIENTOS Y DOMICILIO -->
       <section id="patologias" class="py-20 bg-white border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center mb-14">
-            <h2 class="text-xs font-bold uppercase tracking-widest text-mint-600 mb-2">Especialidad Clínica</h2>
-            <h3 class="text-3xl sm:text-4xl font-black text-slate-900">Condiciones que tratamos a diario</h3>
+            <h2 class="text-xs font-bold uppercase tracking-widest text-mint-600 mb-2">Servicios Integrales</h2>
+            <h3 class="text-3xl sm:text-4xl font-black text-slate-900">Soluciones para cada necesidad</h3>
           </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200 hover:border-primary-300 transition-all">
-              <h4 class="text-lg font-bold text-slate-900 mb-2">Artrosis de Rodilla/Cadera</h4>
-              <p class="text-sm text-slate-600">Reducción de rigidez articular matutina y fortalecimiento muscular.</p>
-            </div>
-            <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200 hover:border-primary-300 transition-all">
-              <h4 class="text-lg font-bold text-slate-900 mb-2">Lumbago Crónico</h4>
-              <p class="text-sm text-slate-600">Reeducación postural en silla y estabilización lumbo-pélvica.</p>
-            </div>
-            <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200 hover:border-primary-300 transition-all">
-              <h4 class="text-lg font-bold text-slate-900 mb-2">Prevención de Caídas</h4>
-              <p class="text-sm text-slate-600">Entrenamiento de equilibrio y propiocepción asistida con silla.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- SECCIÓN: EQUIPO CLÍNICO -->
-      <section id="kinesiologos" class="py-20 bg-sand-100/60 border-b border-slate-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span class="text-xs font-bold uppercase tracking-widest text-primary-700 mb-2 block">Cuerpo de Profesionales</span>
-          <h3 class="text-3xl sm:text-4xl font-black text-slate-900 mb-12">Kinesiólogos con Especialización Geriátrica</h3>
           
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm text-center">
-              <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=300&auto=format&fit=crop&q=80" alt="Klgo. Rodrigo" class="w-24 h-24 rounded-2xl mx-auto object-cover mb-4 border-2 border-mint-100" />
-              <h4 class="text-lg font-bold text-slate-900">Klgo. Rodrigo Navia</h4>
-              <p class="text-xs text-mint-700 font-bold uppercase mb-2">Esp. Traumatología</p>
-              <p class="text-xs text-slate-500 mb-4">Reg. SIS N° 481.920</p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200 hover:border-primary-300 transition-all md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div>
+                <h4 class="text-lg font-bold text-slate-900 mb-2">Artrosis de Rodilla/Cadera</h4>
+                <p class="text-sm text-slate-600">Reducción de rigidez articular y fortalecimiento sin impacto.</p>
+              </div>
+              <div>
+                <h4 class="text-lg font-bold text-slate-900 mb-2">Prevención de Caídas</h4>
+                <p class="text-sm text-slate-600">Entrenamiento de equilibrio para recuperar la confianza al caminar.</p>
+              </div>
+              <div>
+                <h4 class="text-lg font-bold text-slate-900 mb-2">Lumbago Crónico</h4>
+                <p class="text-sm text-slate-600">Reeducación postural suave y estabilización lumbo-pélvica.</p>
+              </div>
+              <div>
+                <h4 class="text-lg font-bold text-slate-900 mb-2">Sarcopenia</h4>
+                <p class="text-sm text-slate-600">Recuperación de fuerza para tareas cotidianas.</p>
+              </div>
             </div>
-            <!-- Otros profesionales omitidos visualmente para no saturar -->
+
+            <!-- Destacado a Domicilio -->
+            <div class="p-6 rounded-3xl bg-gradient-to-br from-slate-900 to-slate-800 text-white shadow-xl relative overflow-hidden flex flex-col justify-center">
+              <i data-lucide="home" class="w-10 h-10 text-primary-400 mb-4 relative z-10"></i>
+              <h4 class="text-xl font-bold mb-2 relative z-10">Kinesiología a Domicilio</h4>
+              <p class="text-sm text-slate-300 mb-4 relative z-10">Para pacientes críticos o con dependencia severa, nuestro equipo evalúa la posibilidad de derivar a un profesional directamente a su hogar.</p>
+              <button class="text-xs font-bold bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg w-max relative z-10 transition-colors">Consultar disponibilidad</button>
+              <i data-lucide="car" class="absolute -bottom-4 -right-4 w-32 h-32 text-white/5 pointer-events-none"></i>
+            </div>
           </div>
         </div>
       </section>
@@ -384,7 +342,7 @@
               </div>
             </div>
 
-            <!-- Paso 4 -->
+            <!-- Paso 4 (Con Consentimiento Legal) -->
             <div id="formStep4" class="hidden space-y-6">
               <h3 class="text-2xl font-black text-slate-900">Antecedentes Clínicos</h3>
               <div class="grid grid-cols-2 gap-3">
@@ -395,6 +353,16 @@
                 <label class="flex items-center gap-2.5 p-3 rounded-xl border border-slate-200 bg-white text-xs font-medium cursor-pointer">
                   <input type="checkbox" checked class="w-4 h-4 text-primary-600 rounded" />
                   <span>Artrosis</span>
+                </label>
+              </div>
+
+              <!-- Checkbox Legal Obligatorio -->
+              <div class="mt-6 pt-6 border-t border-slate-200">
+                <label class="flex items-start gap-3 p-4 rounded-xl border border-primary-200 bg-primary-50 cursor-pointer">
+                  <input type="checkbox" id="acceptTerms" required class="w-5 h-5 text-primary-600 rounded mt-0.5" />
+                  <span class="text-xs text-slate-700 leading-relaxed">
+                    <strong>Acepto el tratamiento de datos:</strong> Autorizo a KineSenior a almacenar mi información médica de forma segura y confidencial para propósitos de evaluación clínica, de acuerdo con la Ley de Protección de Datos y Derechos del Paciente.
+                  </span>
                 </label>
               </div>
             </div>
@@ -425,24 +393,32 @@
           <div class="flex items-center gap-4">
             <div class="w-14 h-14 rounded-full bg-primary-100 text-primary-700 flex items-center justify-center font-black text-xl">MC</div>
             <div>
-              <h2 class="text-2xl font-black text-slate-900" id="portalPatientName">María Elena Contreras</h2>
-              <p class="text-sm text-slate-500">Klgo. Rodrigo Navia · Ficha #KS-7821</p>
+              <div class="flex items-center gap-2">
+                <h2 class="text-2xl font-black text-slate-900" id="portalPatientName">María Elena Contreras</h2>
+                <span class="hidden sm:inline-block bg-mint-100 text-mint-800 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Plan Activo</span>
+              </div>
+              <p class="text-sm text-slate-500">Ficha #KS-7821 · Klgo. Rodrigo Navia</p>
             </div>
           </div>
-          <button onclick="openWhatsAppModal('Hola, tengo una duda con mi rutina')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-4 py-2.5 rounded-xl flex items-center gap-2">
-            <i data-lucide="message-square" class="w-4 h-4"></i> Asistencia Kine
+          <!-- Botón de pasarela de pago (simulado) si estuviese impago -->
+          <button class="hidden bg-slate-900 hover:bg-slate-800 text-white font-bold px-4 py-2.5 rounded-xl flex items-center gap-2">
+            <i data-lucide="credit-card" class="w-4 h-4"></i> Pagar y Desbloquear Plan
           </button>
         </div>
 
-        <div class="flex p-1 bg-slate-200/70 rounded-2xl mb-6">
-          <button onclick="switchPatientTab('rutina')" id="tab-btn-rutina" class="flex-1 py-3 text-sm font-bold rounded-xl transition-all bg-white text-primary-700 shadow-sm">
-            🏃‍♂️ Mi Rutina de Hoy
+        <div class="flex p-1 bg-slate-200/70 rounded-2xl mb-6 overflow-x-auto">
+          <button onclick="switchPatientTab('rutina')" id="tab-btn-rutina" class="flex-1 min-w-[120px] py-3 text-sm font-bold rounded-xl transition-all bg-white text-primary-700 shadow-sm">
+            🏃‍♂️ Mi Rutina
           </button>
-          <button onclick="switchPatientTab('diagnostico')" id="tab-btn-diagnostico" class="flex-1 py-3 text-sm font-bold rounded-xl transition-all text-slate-500 hover:text-slate-700">
-            📋 Mi Diagnóstico
+          <button onclick="switchPatientTab('diagnostico')" id="tab-btn-diagnostico" class="flex-1 min-w-[120px] py-3 text-sm font-bold rounded-xl transition-all text-slate-500 hover:text-slate-700">
+            📋 Diagnóstico
+          </button>
+          <button onclick="switchPatientTab('asistente')" id="tab-btn-asistente" class="flex-1 min-w-[140px] py-3 text-sm font-bold rounded-xl transition-all text-slate-500 hover:text-slate-700 flex justify-center items-center gap-1.5">
+            <i data-lucide="bot" class="w-4 h-4"></i> Asistente AI
           </button>
         </div>
 
+        <!-- PESTAÑA: RUTINA -->
         <div id="tab-rutina" class="space-y-6 block">
           <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-2xl shadow-sm flex items-start gap-3">
             <i data-lucide="alert-triangle" class="w-6 h-6 text-amber-600 shrink-0"></i>
@@ -465,36 +441,71 @@
                 <i data-lucide="play" class="w-6 h-6"></i>
               </button>
             </div>
-            <button onclick="toggleExercise(1)" id="btn-ex-1" class="w-full py-4 rounded-xl border-2 border-slate-300 bg-slate-50 text-slate-600 font-black text-lg hover:bg-emerald-50 hover:text-emerald-700 hover:border-emerald-500 transition-all flex justify-center items-center gap-2">
+            <button onclick="toggleExercise(1)" id="btn-ex-1" class="w-full py-4 rounded-xl border-2 border-slate-300 bg-slate-50 text-slate-600 font-black text-lg hover:bg-emerald-50 hover:text-emerald-700 transition-all flex justify-center items-center gap-2">
               <i data-lucide="circle" class="w-5 h-5"></i> Marcar como Hecho
             </button>
           </div>
-
-          <!-- (Puedes replicar el ejercicio 2 y 3 aquí siguiendo el mismo patrón del ex-card-1) -->
-
-          <div class="text-center text-sm font-bold text-slate-500" id="sessionProgressText">0 ejercicios completados</div>
-          
-          <div id="sessionCompletedBanner" class="hidden mt-6 p-5 rounded-2xl bg-gradient-to-r from-emerald-500 to-mint-600 text-white text-center shadow-lg">
-            <h4 class="text-xl font-black">🎉 ¡Excelente trabajo!</h4>
-          </div>
         </div>
 
+        <!-- PESTAÑA: DIAGNÓSTICO -->
         <div id="tab-diagnostico" class="space-y-6 hidden">
           <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm">
-            <h3 class="text-lg font-bold text-slate-900 mb-4 border-b pb-4">Detalles Clínicos</h3>
+            <h3 class="text-lg font-bold text-slate-900 mb-4 border-b pb-4">Detalles Clínicos de la Evaluación</h3>
             <div class="space-y-4 text-sm">
               <div>
-                <span class="block text-xs font-bold text-slate-500 uppercase">Diagnóstico Principal</span>
+                <span class="block text-xs font-bold text-slate-500 uppercase mb-1">Diagnóstico Principal</span>
                 <p class="font-semibold text-slate-800" id="portalDiagTitle">Gonartrosis bilateral limitante.</p>
+              </div>
+              <div>
+                <span class="block text-xs font-bold text-slate-500 uppercase mb-1">Plan Terapéutico</span>
+                <p class="text-slate-700">Ejercicios de bajo impacto. Monitoreo por Asistente Virtual 2 veces a la semana.</p>
               </div>
             </div>
           </div>
         </div>
+
+        <!-- PESTAÑA: ASISTENTE AI -->
+        <div id="tab-asistente" class="space-y-6 hidden">
+          <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-[500px]">
+            <div class="bg-primary-600 p-4 flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-primary-600">
+                <i data-lucide="bot" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-white text-sm">Asistente Kine AI</h3>
+                <p class="text-xs text-primary-200">Base de conocimientos clínica 24/7</p>
+              </div>
+            </div>
+            
+            <div class="flex-1 p-4 bg-slate-50 overflow-y-auto space-y-4">
+              <!-- Mensaje Bot -->
+              <div class="flex items-start gap-2">
+                <div class="w-8 h-8 rounded-full bg-primary-100 text-primary-700 flex items-center justify-center shrink-0">
+                  <i data-lucide="bot" class="w-4 h-4"></i>
+                </div>
+                <div class="bg-white p-3 rounded-2xl rounded-tl-none border border-slate-200 text-xs text-slate-700 shadow-sm">
+                  Hola María Elena. Soy tu asistente virtual. Puedo responder dudas sobre tus ejercicios, recomendarte posturas o explicarte términos de tu pauta. ¿En qué te ayudo hoy?
+                </div>
+              </div>
+              <!-- Preguntas sugeridas -->
+              <div class="ml-10 space-y-2">
+                <button class="block w-full text-left bg-white border border-primary-200 text-primary-700 text-xs p-2 rounded-xl hover:bg-primary-50">¿Qué pasa si me duele al hacer la serie 2?</button>
+                <button class="block w-full text-left bg-white border border-primary-200 text-primary-700 text-xs p-2 rounded-xl hover:bg-primary-50">Solicitar Kinesiólogo a Domicilio</button>
+              </div>
+            </div>
+
+            <div class="p-3 bg-white border-t border-slate-200 flex gap-2">
+              <input type="text" placeholder="Escribe tu duda aquí..." class="flex-1 text-xs px-3 py-2 rounded-xl border border-slate-300 outline-none focus:ring-1 focus:ring-primary-500" />
+              <button class="bg-primary-600 text-white p-2.5 rounded-xl"><i data-lucide="send" class="w-4 h-4"></i></button>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
     <!-- ==========================================
-         SECCIÓN 4: VISTA KINESIÓLOGO (TRIAGE KANBAN)
+         SECCIÓN 4: VISTA KINESIÓLOGO (EMBUDO TRIAGE)
          ========================================== -->
     <div id="section-kine-admin" class="hidden py-10 bg-slate-50 min-h-[85vh]">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -504,40 +515,72 @@
             <h2 class="text-3xl font-black text-slate-900 flex items-center gap-3">
               <i data-lucide="layout-dashboard" class="w-8 h-8 text-primary-600"></i> Panel Clínico
             </h2>
-            <p class="text-sm text-slate-500">Gestión de Triage y Emisión de Pautas</p>
+            <p class="text-sm text-slate-500">Gestión del Embudo de Pacientes</p>
           </div>
-          <button onclick="simulateLogin('patient')" class="bg-slate-900 text-white font-bold px-5 py-2.5 rounded-xl hover:bg-slate-800">
+          <button onclick="simulateLogin('patient')" class="bg-slate-900 text-white font-bold px-5 py-2.5 rounded-xl hover:bg-slate-800 transition-all">
             Ir a Vista Paciente
           </button>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm flex flex-col">
-            <div class="p-5 border-b border-slate-100">
-              <div class="flex justify-between items-start mb-3">
-                <span class="bg-amber-100 text-amber-800 text-[10px] uppercase font-black px-2 py-1 rounded">Pendiente Evaluar</span>
-                <span class="flex items-center gap-1 text-xs font-bold text-rose-600 bg-rose-50 px-2 py-1 rounded-md">
-                  <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span> EVA 8/10
-                </span>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <!-- COLUMNA 1: NUEVOS (Por Evaluar) -->
+          <div class="bg-slate-200/50 rounded-3xl p-4 flex flex-col gap-4">
+            <h3 class="font-bold text-slate-700 uppercase text-xs flex justify-between">
+              <span>1. Por Evaluar (Nuevos)</span>
+              <span class="bg-slate-300 text-slate-800 px-2 rounded-full">1</span>
+            </h3>
+            
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 hover:shadow-md transition-all">
+              <div class="flex justify-between items-start mb-2">
+                <span class="text-[10px] bg-rose-100 text-rose-800 font-bold px-2 py-0.5 rounded">Prioridad Alta</span>
+                <span class="text-[10px] font-bold text-slate-500">Hace 2 hrs</span>
               </div>
-              <h3 class="text-lg font-black text-slate-900">Don Hernán Valdés</h3>
-              <p class="text-xs text-slate-500">81 años · Columna Lumbar</p>
-            </div>
-            <div class="p-4 border-t border-slate-100 flex gap-2">
-              <button class="flex-1 bg-primary-600 text-white font-bold text-xs py-2.5 rounded-xl shadow-md">Crear Pauta</button>
+              <h4 class="font-bold text-slate-900">Don Hernán Valdés</h4>
+              <p class="text-xs text-slate-500 mb-3">81 años · Dolor Lumbar (EVA 8)</p>
+              <button class="w-full bg-primary-600 hover:bg-primary-700 text-white font-bold text-xs py-2 rounded-xl">Crear Diagnóstico</button>
             </div>
           </div>
+
+          <!-- COLUMNA 2: ENVIADOS (Esperando Pago) -->
+          <div class="bg-slate-200/50 rounded-3xl p-4 flex flex-col gap-4">
+            <h3 class="font-bold text-slate-700 uppercase text-xs flex justify-between">
+              <span>2. Diagnóstico Enviado</span>
+              <span class="bg-slate-300 text-slate-800 px-2 rounded-full">1</span>
+            </h3>
+            
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 opacity-80">
+              <div class="flex justify-between items-start mb-2">
+                <span class="text-[10px] bg-amber-100 text-amber-800 font-bold px-2 py-0.5 rounded flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3"></i> Esperando Pago</span>
+              </div>
+              <h4 class="font-bold text-slate-900">Sra. Carmen López</h4>
+              <p class="text-xs text-slate-500 mb-3">68 años · Manguito Rotador</p>
+              <button class="w-full bg-slate-100 text-slate-500 font-bold text-xs py-2 rounded-xl cursor-not-allowed">Pauta Bloqueada</button>
+            </div>
+          </div>
+
+          <!-- COLUMNA 3: ACTIVOS (Pagados) -->
+          <div class="bg-slate-200/50 rounded-3xl p-4 flex flex-col gap-4">
+            <h3 class="font-bold text-slate-700 uppercase text-xs flex justify-between">
+              <span>3. Pautas Activas</span>
+              <span class="bg-mint-200 text-mint-800 px-2 rounded-full">1</span>
+            </h3>
+            
+            <div class="bg-white rounded-2xl border border-mint-200 shadow-sm p-4 ring-1 ring-mint-400">
+              <div class="flex justify-between items-start mb-2">
+                <span class="text-[10px] bg-mint-100 text-mint-800 font-bold px-2 py-0.5 rounded">Plan Premium Activo</span>
+              </div>
+              <h4 class="font-bold text-slate-900">María Elena Contreras</h4>
+              <p class="text-xs text-slate-500 mb-3">74 años · Gonartrosis</p>
+              <button onclick="showSection('portal')" class="w-full bg-mint-50 hover:bg-mint-100 text-mint-700 font-bold text-xs py-2 rounded-xl">Revisar Progreso</button>
+            </div>
+          </div>
+
         </div>
 
       </div>
     </div>
   </main>
-
-  <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800 text-sm mt-auto">
-    <div class="max-w-7xl mx-auto px-4 text-center">
-      <span>© 2026 KineSenior. Cuidado y movilidad en casa.</span>
-    </div>
-  </footer>
 
   <!-- ==========================================
        MODAL: INGRESO INTELIGENTE (Simulador)
@@ -552,7 +595,7 @@
         <i data-lucide="user-check" class="w-8 h-8"></i>
       </div>
       <h3 class="text-xl font-black text-slate-900 mb-2">Ingresar a KineSenior</h3>
-      <p class="text-sm text-slate-500 mb-6">Ingresa tu RUT o Correo para acceder a tu perfil.</p>
+      <p class="text-sm text-slate-500 mb-6">Ingresa tu RUT o Correo para acceder a tu perfil seguro.</p>
       
       <div class="space-y-4 mb-6">
         <input type="text" placeholder="Ej: 12.345.678-9" class="w-full px-4 py-3 rounded-xl border border-slate-300 outline-none text-slate-800 text-sm text-center" />
@@ -569,16 +612,14 @@
   </div>
 
   <script>
-    // Lógica e interactividad del prototipo
     const appState = {
       currentRole: 'patient',
       currentStep: 1, totalSteps: 4,
-      completedExercises: [false] // Ajustar según cantidad de ejercicios en la vista
+      completedExercises: [false]
     };
 
     document.addEventListener('DOMContentLoaded', () => { lucide.createIcons(); });
 
-    // Secciones
     function showSection(id) {
       ['landing', 'questionnaire', 'portal', 'kine-admin'].forEach(sec => {
         const el = document.getElementById(`section-${sec}`);
@@ -589,7 +630,6 @@
       lucide.createIcons();
     }
 
-    // Modal Login Inteligente
     function openLoginModal() {
       document.getElementById('loginModal').classList.remove('hidden');
       lucide.createIcons();
@@ -602,17 +642,21 @@
       if (role === 'patient') showSection('portal');
       else if (role === 'kine') showSection('kine-admin');
     }
-
-    // Menú Móvil
     function toggleMobileMenu() {
       document.getElementById('mobileMenu').classList.toggle('hidden');
     }
 
-    // Cuestionario
     function startQuestionnaire() {
       appState.currentStep = 1; updateStepUI(); showSection('questionnaire');
     }
     function nextStep() {
+      if(appState.currentStep === 4) {
+        const terms = document.getElementById('acceptTerms').checked;
+        if(!terms) {
+          alert('Debes aceptar el tratamiento de datos para continuar.');
+          return;
+        }
+      }
       if(appState.currentStep < appState.totalSteps) { appState.currentStep++; updateStepUI(); }
       else finishQuestionnaire();
     }
@@ -634,7 +678,7 @@
       
       const nxt = document.getElementById('nextStepBtn');
       nxt.innerHTML = appState.currentStep === appState.totalSteps 
-        ? `<span>Finalizar</span><i data-lucide="check" class="w-4 h-4"></i>`
+        ? `<span>Enviar para Evaluación</span><i data-lucide="check" class="w-4 h-4"></i>`
         : `<span>Siguiente</span><i data-lucide="arrow-right" class="w-4 h-4"></i>`;
       lucide.createIcons();
     }
@@ -642,45 +686,39 @@
     function finishQuestionnaire() {
       const name = document.getElementById('patientName').value.trim();
       if(name) document.getElementById('portalPatientName').innerText = name;
-      showSection('portal');
+      alert("¡Ficha enviada con éxito! Un kinesiólogo te enviará tu diagnóstico gratuito en 2 a 3 días hábiles.");
+      showSection('landing');
     }
 
-    // Pestañas Portal Paciente
     function switchPatientTab(tabName) {
       document.getElementById('tab-rutina').classList.add('hidden');
       document.getElementById('tab-diagnostico').classList.add('hidden');
-      document.getElementById('tab-btn-rutina').className = 'flex-1 py-3 text-sm font-bold rounded-xl transition-all text-slate-500 hover:text-slate-700';
-      document.getElementById('tab-btn-diagnostico').className = 'flex-1 py-3 text-sm font-bold rounded-xl transition-all text-slate-500 hover:text-slate-700';
+      document.getElementById('tab-asistente').classList.add('hidden');
+      
+      const baseClass = 'flex-1 min-w-[120px] py-3 text-sm font-bold rounded-xl transition-all text-slate-500 hover:text-slate-700 flex justify-center items-center gap-1.5';
+      const activeClass = 'flex-1 min-w-[120px] py-3 text-sm font-bold rounded-xl transition-all bg-white text-primary-700 shadow-sm flex justify-center items-center gap-1.5';
+      
+      document.getElementById('tab-btn-rutina').className = baseClass;
+      document.getElementById('tab-btn-diagnostico').className = baseClass;
+      document.getElementById('tab-btn-asistente').className = baseClass;
 
       document.getElementById(`tab-${tabName}`).classList.remove('hidden');
-      document.getElementById(`tab-btn-${tabName}`).className = 'flex-1 py-3 text-sm font-bold rounded-xl transition-all bg-white text-primary-700 shadow-sm';
+      document.getElementById(`tab-btn-${tabName}`).className = activeClass;
     }
 
-    // Ejercicios
     function toggleExercise(num) {
       const idx = num - 1;
       appState.completedExercises[idx] = !appState.completedExercises[idx];
       const isDone = appState.completedExercises[idx];
       const btn = document.getElementById(`btn-ex-${num}`);
-      const card = document.getElementById(`ex-card-${num}`);
-      const exNum = document.getElementById(`ex-num-${num}`);
 
       if (isDone) {
         btn.innerHTML = `<i data-lucide="check-circle-2" class="w-6 h-6"></i> Completado`;
         btn.className = 'w-full py-4 rounded-xl border-2 border-emerald-500 bg-emerald-50 text-emerald-700 font-black text-lg transition-all flex justify-center items-center gap-2';
-        card.className = 'bg-emerald-50/20 border-2 border-emerald-300 rounded-3xl p-6 shadow-sm transition-all';
-        exNum.className = 'w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center font-black text-emerald-600 text-xl';
       } else {
         btn.innerHTML = `<i data-lucide="circle" class="w-5 h-5"></i> Marcar como Hecho`;
-        btn.className = 'w-full py-4 rounded-xl border-2 border-slate-300 bg-slate-50 text-slate-600 font-black text-lg hover:bg-emerald-50 hover:text-emerald-700 hover:border-emerald-500 transition-all flex justify-center items-center gap-2';
-        card.className = 'bg-white border-2 border-slate-200 rounded-3xl p-6 shadow-sm';
-        exNum.className = 'w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center font-black text-slate-400 text-xl';
+        btn.className = 'w-full py-4 rounded-xl border-2 border-slate-300 bg-slate-50 text-slate-600 font-black text-lg hover:bg-emerald-50 hover:text-emerald-700 transition-all flex justify-center items-center gap-2';
       }
-      
-      const doneCount = appState.completedExercises.filter(Boolean).length;
-      document.getElementById('sessionProgressText').innerText = `${doneCount} completado(s)`;
-      if (doneCount > 0) document.getElementById('sessionCompletedBanner').classList.remove('hidden');
-      else document.getElementById('sessionCompletedBanner').classList.add('hidden');
       lucide.createIcons();
     }
   </script>
