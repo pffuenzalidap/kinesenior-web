@@ -55,7 +55,7 @@
   <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       
-      <!-- Logotipo KineSenior (Actualizado a Salud/Vitalidad) -->
+      <!-- Logotipo KineSenior -->
       <a href="#" onclick="showSection('landing')" class="flex items-center gap-3 group shrink-0">
         <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-primary-600 to-mint-500 flex items-center justify-center text-white shadow-md shadow-primary-500/20 group-hover:scale-105 transition-transform">
           <i data-lucide="heart-pulse" class="w-6 h-6"></i>
@@ -71,7 +71,7 @@
 
       <!-- Menú Desktop -->
       <nav class="hidden lg:flex items-center gap-8 text-sm font-semibold text-slate-600">
-        <a href="#como-funciona" onclick="showSection('landing')" class="hover:text-primary-600 transition-colors">¿Cómo funciona?</a>
+        <a href="#como-funciona" onclick="showSection('landing')" class="hover:text-primary-600 transition-colors">Simulación del Servicio</a>
         <a href="#patologias" onclick="showSection('landing')" class="hover:text-primary-600 transition-colors">Tratamientos</a>
         <a href="#kinesiologos" onclick="showSection('landing')" class="hover:text-primary-600 transition-colors">Equipo Clínico</a>
       </nav>
@@ -79,7 +79,7 @@
       <!-- Botones de Acción -->
       <div class="flex items-center gap-2 sm:gap-4 shrink-0">
         <button onclick="openLoginModal()" class="hidden sm:flex items-center gap-2 text-sm font-bold text-slate-700 hover:text-primary-600 hover:bg-slate-50 px-3 py-2 rounded-xl transition-colors">
-          <i data-lucide="user-circle" class="w-5 h-5 text-slate-400"></i> Ingresar
+          <i data-lucide="user-circle" class="w-5 h-5 text-slate-400"></i> Ingresar al Portal
         </button>
 
         <button onclick="startQuestionnaire()" class="bg-primary-600 hover:bg-primary-700 text-white font-bold text-sm sm:text-base px-4 sm:px-5 py-2.5 rounded-xl shadow-lg shadow-primary-600/25 transition-all flex items-center gap-2">
@@ -95,7 +95,7 @@
 
     <!-- Menú Desplegable Móvil -->
     <div id="mobileMenu" class="hidden lg:hidden border-t border-slate-200 bg-white px-4 py-4 space-y-3 shadow-lg absolute w-full">
-      <a href="#como-funciona" onclick="toggleMobileMenu(); showSection('landing')" class="block font-semibold text-slate-700 p-2 hover:bg-slate-50 rounded-lg">¿Cómo funciona?</a>
+      <a href="#como-funciona" onclick="toggleMobileMenu(); showSection('landing')" class="block font-semibold text-slate-700 p-2 hover:bg-slate-50 rounded-lg">Simulación del Servicio</a>
       <a href="#patologias" onclick="toggleMobileMenu(); showSection('landing')" class="block font-semibold text-slate-700 p-2 hover:bg-slate-50 rounded-lg">Tratamientos</a>
       <button onclick="toggleMobileMenu(); openLoginModal()" class="w-full text-left font-bold text-primary-600 p-2 hover:bg-slate-50 rounded-lg flex items-center gap-2">
         <i data-lucide="user-circle" class="w-5 h-5"></i> Ingresar a mi Portal
@@ -106,7 +106,7 @@
   <div class="bg-gradient-to-r from-primary-700 via-primary-600 to-mint-600 text-white py-2.5 px-4 text-center text-xs sm:text-sm font-medium shadow-inner">
     <div class="max-w-6xl mx-auto flex items-center justify-center gap-2 flex-wrap">
       <span class="inline-flex items-center gap-1 bg-white/20 px-2 py-0.5 rounded-md text-[11px] font-bold">FONASA / ISAPRE REEMBOLSABLE</span>
-      <span>No requieres salir de casa: Completa tu cuestionario gratuito y recibe un diagnóstico profesional.</span>
+      <span>Desde tu celular o computador: Completa nuestro cuestionario y recibe tu diagnóstico inicial gratis.</span>
     </div>
   </div>
 
@@ -124,41 +124,39 @@
             <div class="lg:col-span-7 flex flex-col items-start space-y-6">
               <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-mint-50 border border-mint-200 text-mint-800 text-xs font-semibold">
                 <i data-lucide="check-circle-2" class="w-4 h-4 text-mint-600"></i>
-                Evaluación inicial 100% gratuita
+                Tu diagnóstico inicial es 100% gratuito
               </div>
 
               <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.15] text-balance">
-                Recupera tu movilidad y autonomía <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-mint-600">sin salir de casa.</span>
+                Recupera tu movilidad y autonomía <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-mint-600">desde tu hogar.</span>
               </h1>
 
               <p class="text-lg sm:text-xl text-slate-600 font-normal leading-relaxed text-balance max-w-2xl">
-                Completas nuestro cuestionario digital. Nuestros <strong>kinesiólogos geriátricos</strong> analizan tu caso gratis y te proponen un <strong>plan de rehabilitación 100% personalizado</strong> con videos, seguimiento y asistencia virtual.
+                Nuestro equipo de <strong>kinesiólogos geriátricos</strong> analiza tu caso sin costo inicial. Si decides iniciar tu recuperación con nosotros, elaboraremos un <strong>plan de rehabilitación personalizado</strong> con videos, seguimiento continuo y asistencia virtual.
               </p>
 
               <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto pt-4">
                 <button onclick="startQuestionnaire()" class="bg-primary-600 hover:bg-primary-700 text-white font-bold text-lg px-8 py-4 rounded-2xl shadow-xl shadow-primary-600/25 transition-all transform hover:-translate-y-0.5 flex items-center justify-center gap-3">
-                  <span>Iniciar Triage Gratuito</span>
+                  <span>Comenzar Evaluación Gratuita</span>
                   <i data-lucide="chevron-right" class="w-5 h-5"></i>
                 </button>
               </div>
             </div>
 
+            <!-- Visual Interactivo Hero: Enfoque en la Pauta Simple -->
             <div class="lg:col-span-5">
               <div class="relative mx-auto max-w-md lg:max-w-none">
                 <div class="bg-gradient-to-b from-white to-slate-50 rounded-3xl p-6 sm:p-7 shadow-2xl border border-slate-200/80 relative">
                   <div class="flex items-center justify-between pb-5 border-b border-slate-200">
                     <div class="flex items-center gap-3">
                       <div class="w-12 h-12 rounded-2xl bg-primary-100 flex items-center justify-center text-primary-700">
-                        <i data-lucide="clipboard-check" class="w-6 h-6"></i>
+                        <i data-lucide="smartphone" class="w-6 h-6"></i>
                       </div>
                       <div>
-                        <div class="text-xs text-slate-500 font-medium">Ejemplo Portal Paciente</div>
-                        <h4 class="text-base font-bold text-slate-900">Plan Movilidad & Artrosis</h4>
+                        <div class="text-xs text-slate-500 font-medium">Ejemplo Portal del Paciente</div>
+                        <h4 class="text-base font-bold text-slate-900">Plan Movilidad Personalizado</h4>
                       </div>
                     </div>
-                    <span class="bg-mint-100 text-mint-800 text-xs font-bold px-2.5 py-1 rounded-full flex items-center gap-1">
-                      Premium
-                    </span>
                   </div>
 
                   <div class="space-y-4 py-5">
@@ -167,7 +165,7 @@
                         <div class="w-10 h-10 rounded-xl bg-primary-50 flex items-center justify-center text-primary-600 font-bold text-sm">1</div>
                         <div>
                           <p class="text-sm font-bold text-slate-800">Extensión de cuádriceps sentado</p>
-                          <p class="text-xs text-slate-500">3 series × 10 reps (Silla firme)</p>
+                          <p class="text-xs text-slate-500">Video explicativo paso a paso</p>
                         </div>
                       </div>
                     </div>
@@ -178,12 +176,22 @@
                       <div class="w-9 h-9 rounded-full bg-primary-600 text-white flex items-center justify-center font-bold text-xs">AI</div>
                       <div>
                         <p class="text-xs font-bold text-slate-900">Asistente Virtual 24/7</p>
-                        <p class="text-[11px] text-slate-500">Respuestas y guía en vivo</p>
+                        <p class="text-[11px] text-slate-500">Responde tus dudas clínicas</p>
                       </div>
                     </div>
                     <button onclick="openLoginModal()" class="text-xs font-bold text-primary-600 hover:underline">
-                      Ver Demo Portal →
+                      Ver Demo del Portal →
                     </button>
+                  </div>
+                </div>
+
+                <div class="absolute -bottom-5 -left-5 bg-white border border-slate-200 py-2.5 px-4 rounded-2xl shadow-xl flex items-center gap-3">
+                  <div class="w-9 h-9 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-700">
+                    <i data-lucide="shield-check" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <div class="text-xs font-bold text-slate-800">Cuidado Certificado</div>
+                    <div class="text-[11px] text-slate-500">Diseñado por profesionales</div>
                   </div>
                 </div>
               </div>
@@ -193,37 +201,49 @@
         </div>
       </section>
 
-      <!-- SECCIÓN: CÓMO FUNCIONA (Transparencia del negocio) -->
+      <!-- SECCIÓN: CÓMO FUNCIONA (Simulación del Flujo) -->
       <section id="como-funciona" class="py-20 bg-slate-50 border-b border-slate-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center max-w-3xl mx-auto mb-16">
             <h2 class="text-xs font-bold uppercase tracking-widest text-primary-600 mb-2">Transparencia y Claridad</h2>
-            <h3 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">El proceso hacia tu rehabilitación</h3>
+            <h3 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">El paso a paso de tu recuperación (Simulación)</h3>
           </div>
           
           <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <!-- Paso 1 -->
             <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm relative">
               <div class="w-12 h-12 rounded-xl bg-primary-100 text-primary-700 font-black text-xl flex items-center justify-center mb-4">1</div>
-              <h4 class="text-base font-bold text-slate-900 mb-2">Cuestionario Gratis</h4>
-              <p class="text-slate-600 text-xs">Completas el formulario clínico digital indicando tus dolores y antecedentes médicos.</p>
+              <h4 class="text-base font-bold text-slate-900 mb-2">Evaluación Inicial</h4>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                Completas un breve formulario con tus molestias. <strong>Solo pedimos tu correo y nombre</strong>; no solicitaremos datos sensibles como tu RUT en esta etapa.
+              </p>
             </div>
             
+            <!-- Paso 2 -->
             <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm relative">
               <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 font-black text-xl flex items-center justify-center mb-4">2</div>
-              <h4 class="text-base font-bold text-slate-900 mb-2">Evaluación Clínica</h4>
-              <p class="text-slate-600 text-xs">En <strong>2 a 3 días hábiles</strong>, un kinesiólogo colegiado revisa tu caso y emite un diagnóstico gratuito.</p>
+              <h4 class="text-base font-bold text-slate-900 mb-2">Diagnóstico al Correo</h4>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                Recibirás <strong>gratuitamente</strong> en tu correo un diagnóstico inicial de nuestros kinesiólogos. Si aceptas continuar, te guiaremos al pago seguro.
+              </p>
             </div>
             
+            <!-- Paso 3 -->
             <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm relative border-primary-300 bg-primary-50/30">
-              <div class="w-12 h-12 rounded-xl bg-mint-500 text-white font-black text-xl flex items-center justify-center mb-4"><i data-lucide="credit-card" class="w-5 h-5"></i></div>
-              <h4 class="text-base font-bold text-slate-900 mb-2">Pago y Activación</h4>
-              <p class="text-slate-600 text-xs">Si decides avanzar, pagas tu plan de forma segura en la web y se desbloquea tu cuenta.</p>
+              <div class="w-12 h-12 rounded-xl bg-primary-600 text-white font-black text-xl flex items-center justify-center mb-4"><i data-lucide="credit-card" class="w-5 h-5"></i></div>
+              <h4 class="text-base font-bold text-slate-900 mb-2">Pago y Creación del Plan</h4>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                Una vez validado tu pago, nuestro equipo médico diseñará tu pauta de rehabilitación personalizada en un plazo de <strong>2 a 3 días hábiles</strong>.
+              </p>
             </div>
             
+            <!-- Paso 4 -->
             <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm relative">
-              <div class="w-12 h-12 rounded-xl bg-slate-900 text-white font-black text-xl flex items-center justify-center mb-4">4</div>
-              <h4 class="text-base font-bold text-slate-900 mb-2">Rehabilitación</h4>
-              <p class="text-slate-600 text-xs">Accedes a tu pauta de ejercicios, registro de progreso y consultas al Asistente Virtual 24/7.</p>
+              <div class="w-12 h-12 rounded-xl bg-slate-900 text-white font-black text-xl flex items-center justify-center mb-4"><i data-lucide="download" class="w-5 h-5"></i></div>
+              <h4 class="text-base font-bold text-slate-900 mb-2">Tu Portal Personal</h4>
+              <p class="text-slate-600 text-sm leading-relaxed">
+                Revisa y descarga tu pauta desde tu celular o computador explicada en lenguaje sencillo, apoyado por nuestro Asistente Virtual 24/7.
+              </p>
             </div>
           </div>
         </div>
@@ -234,7 +254,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center mb-14">
             <h2 class="text-xs font-bold uppercase tracking-widest text-mint-600 mb-2">Servicios Integrales</h2>
-            <h3 class="text-3xl sm:text-4xl font-black text-slate-900">Soluciones para cada necesidad</h3>
+            <h3 class="text-3xl sm:text-4xl font-black text-slate-900">Soluciones adaptadas a cada necesidad</h3>
           </div>
           
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -249,11 +269,11 @@
               </div>
               <div>
                 <h4 class="text-lg font-bold text-slate-900 mb-2">Lumbago Crónico</h4>
-                <p class="text-sm text-slate-600">Reeducación postural suave y estabilización lumbo-pélvica.</p>
+                <p class="text-sm text-slate-600">Reeducación postural suave y estabilización de la columna.</p>
               </div>
               <div>
-                <h4 class="text-lg font-bold text-slate-900 mb-2">Sarcopenia</h4>
-                <p class="text-sm text-slate-600">Recuperación de fuerza para tareas cotidianas.</p>
+                <h4 class="text-lg font-bold text-slate-900 mb-2">Pérdida de Fuerza (Sarcopenia)</h4>
+                <p class="text-sm text-slate-600">Recuperación de energía y tono muscular para tareas cotidianas.</p>
               </div>
             </div>
 
@@ -261,9 +281,9 @@
             <div class="p-6 rounded-3xl bg-gradient-to-br from-slate-900 to-slate-800 text-white shadow-xl relative overflow-hidden flex flex-col justify-center">
               <i data-lucide="home" class="w-10 h-10 text-primary-400 mb-4 relative z-10"></i>
               <h4 class="text-xl font-bold mb-2 relative z-10">Kinesiología a Domicilio</h4>
-              <p class="text-sm text-slate-300 mb-4 relative z-10">Para pacientes críticos o con dependencia severa, nuestro equipo evalúa la posibilidad de derivar a un profesional directamente a su hogar.</p>
+              <p class="text-sm text-slate-300 mb-4 relative z-10">Para pacientes en estado crítico o con dependencia severa, ofrecemos la opción de derivar a un profesional directamente a su hogar.</p>
               <button class="text-xs font-bold bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg w-max relative z-10 transition-colors">Consultar disponibilidad</button>
-              <i data-lucide="car" class="absolute -bottom-4 -right-4 w-32 h-32 text-white/5 pointer-events-none"></i>
+              <i data-lucide="heart-pulse" class="absolute -bottom-4 -right-4 w-32 h-32 text-white/5 pointer-events-none"></i>
             </div>
           </div>
         </div>
@@ -271,7 +291,7 @@
     </div>
 
     <!-- ==========================================
-         SECCIÓN 2: CUESTIONARIO MÉDICO (Triage)
+         SECCIÓN 2: CUESTIONARIO MÉDICO DIGITAL (Evaluación Inicial)
          ========================================== -->
     <div id="section-questionnaire" class="hidden py-10 sm:py-16 bg-slate-50 min-h-[85vh]">
       <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -290,15 +310,22 @@
           <form id="kineForm" onsubmit="event.preventDefault(); nextStep();">
             <!-- Paso 1 -->
             <div id="formStep1" class="space-y-6">
-              <h3 class="text-2xl font-black text-slate-900">Identificación del Paciente</h3>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <h3 class="text-2xl font-black text-slate-900">Identificación Básica</h3>
+              <p class="text-sm text-slate-600">Para enviarte tu evaluación inicial gratuita, solo necesitamos unos datos de contacto básicos.</p>
+              
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Nombre Completo</label>
+                  <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Nombre del Paciente</label>
                   <input type="text" id="patientName" required placeholder="Ej: María Elena Contreras" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-primary-500" value="María Elena Contreras" />
                 </div>
                 <div>
                   <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Edad</label>
                   <input type="number" id="patientAge" required placeholder="Ej: 74" class="w-full px-4 py-3 rounded-xl border border-slate-300" value="74" />
+                </div>
+                <div class="sm:col-span-2">
+                  <label class="block text-xs font-bold text-slate-700 uppercase mb-1">Correo Electrónico (Para recibir diagnóstico)</label>
+                  <input type="email" id="patientEmail" required placeholder="ejemplo@correo.com" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:ring-primary-500" value="maria.contreras@gmail.com" />
+                  <p class="text-xs text-slate-500 mt-2"><i data-lucide="lock" class="w-3 h-3 inline"></i> No pediremos tu RUT ni datos bancarios en esta fase gratuita.</p>
                 </div>
               </div>
             </div>
@@ -333,6 +360,7 @@
             <!-- Paso 3 -->
             <div id="formStep3" class="hidden space-y-6">
               <h3 class="text-2xl font-black text-slate-900">Nivel de Dolor (EVA)</h3>
+              <p class="text-sm text-slate-600">En una escala del 1 al 10, ¿cuánto interfiere este dolor en tu día a día?</p>
               <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
                 <div class="flex justify-between items-center mb-3">
                   <span class="text-sm font-bold text-slate-700">Intensidad:</span>
@@ -361,7 +389,7 @@
                 <label class="flex items-start gap-3 p-4 rounded-xl border border-primary-200 bg-primary-50 cursor-pointer">
                   <input type="checkbox" id="acceptTerms" required class="w-5 h-5 text-primary-600 rounded mt-0.5" />
                   <span class="text-xs text-slate-700 leading-relaxed">
-                    <strong>Acepto el tratamiento de datos:</strong> Autorizo a KineSenior a almacenar mi información médica de forma segura y confidencial para propósitos de evaluación clínica, de acuerdo con la Ley de Protección de Datos y Derechos del Paciente.
+                    <strong>Acepto el tratamiento de datos:</strong> Autorizo a KineSenior a almacenar mi información médica de forma segura para propósitos de evaluación clínica, de acuerdo con la Ley de Protección de Datos. Entiendo que recibiré mi diagnóstico por correo y que el diseño de mi pauta (si decido pagar el servicio) tomará de 2 a 3 días hábiles.
                   </span>
                 </label>
               </div>
@@ -384,7 +412,7 @@
     </div>
 
     <!-- ==========================================
-         SECCIÓN 3: PORTAL DEL PACIENTE (PESTAÑAS)
+         SECCIÓN 3: PORTAL DEL PACIENTE (SIMULACIÓN PLAN ACTIVO)
          ========================================== -->
     <div id="section-portal" class="hidden py-8 sm:py-12 bg-sand-100/60 min-h-[85vh]">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -397,24 +425,24 @@
                 <h2 class="text-2xl font-black text-slate-900" id="portalPatientName">María Elena Contreras</h2>
                 <span class="hidden sm:inline-block bg-mint-100 text-mint-800 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Plan Activo</span>
               </div>
-              <p class="text-sm text-slate-500">Ficha #KS-7821 · Klgo. Rodrigo Navia</p>
+              <p class="text-sm text-slate-500">Tu plan fue activado exitosamente hace 2 días.</p>
             </div>
           </div>
-          <!-- Botón de pasarela de pago (simulado) si estuviese impago -->
-          <button class="hidden bg-slate-900 hover:bg-slate-800 text-white font-bold px-4 py-2.5 rounded-xl flex items-center gap-2">
-            <i data-lucide="credit-card" class="w-4 h-4"></i> Pagar y Desbloquear Plan
+          <!-- Botón simulación descarga -->
+          <button class="bg-slate-900 hover:bg-slate-800 text-white font-bold px-4 py-2.5 rounded-xl flex items-center gap-2 shadow-md">
+            <i data-lucide="download" class="w-4 h-4"></i> Descargar Pauta Completa
           </button>
         </div>
 
         <div class="flex p-1 bg-slate-200/70 rounded-2xl mb-6 overflow-x-auto">
-          <button onclick="switchPatientTab('rutina')" id="tab-btn-rutina" class="flex-1 min-w-[120px] py-3 text-sm font-bold rounded-xl transition-all bg-white text-primary-700 shadow-sm">
-            🏃‍♂️ Mi Rutina
+          <button onclick="switchPatientTab('rutina')" id="tab-btn-rutina" class="flex-1 min-w-[120px] py-3 text-sm font-bold rounded-xl transition-all bg-white text-primary-700 shadow-sm flex justify-center items-center gap-1.5">
+            <i data-lucide="activity" class="w-4 h-4"></i> Mi Rutina
           </button>
-          <button onclick="switchPatientTab('diagnostico')" id="tab-btn-diagnostico" class="flex-1 min-w-[120px] py-3 text-sm font-bold rounded-xl transition-all text-slate-500 hover:text-slate-700">
-            📋 Diagnóstico
+          <button onclick="switchPatientTab('diagnostico')" id="tab-btn-diagnostico" class="flex-1 min-w-[120px] py-3 text-sm font-bold rounded-xl transition-all text-slate-500 hover:text-slate-700 flex justify-center items-center gap-1.5">
+            <i data-lucide="clipboard" class="w-4 h-4"></i> Diagnóstico
           </button>
           <button onclick="switchPatientTab('asistente')" id="tab-btn-asistente" class="flex-1 min-w-[140px] py-3 text-sm font-bold rounded-xl transition-all text-slate-500 hover:text-slate-700 flex justify-center items-center gap-1.5">
-            <i data-lucide="bot" class="w-4 h-4"></i> Asistente AI
+            <i data-lucide="bot" class="w-4 h-4"></i> Asistente Clínico AI
           </button>
         </div>
 
@@ -423,8 +451,8 @@
           <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-2xl shadow-sm flex items-start gap-3">
             <i data-lucide="alert-triangle" class="w-6 h-6 text-amber-600 shrink-0"></i>
             <div>
-              <h4 class="text-sm font-bold text-amber-900">Regla de Oro</h4>
-              <p class="text-xs text-amber-800 mt-1">Si el dolor supera 5/10, detente. Usa siempre una silla firme apoyada en la pared.</p>
+              <h4 class="text-sm font-bold text-amber-900">Recomendación Clínica</h4>
+              <p class="text-xs text-amber-800 mt-1">Realiza estos movimientos de forma pausada. Usa calzado cerrado y asegúrate de tener una silla pesada que no resbale.</p>
             </div>
           </div>
 
@@ -434,15 +462,15 @@
                 <div class="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center font-black text-slate-400 text-xl" id="ex-num-1">1</div>
                 <div>
                   <h4 class="text-lg font-bold text-slate-900">Extensión de rodilla en silla</h4>
-                  <span class="inline-block bg-slate-100 text-slate-600 text-xs font-bold px-3 py-1 rounded-lg mt-1">3 series × 10 reps</span>
+                  <span class="inline-block bg-slate-100 text-slate-600 text-xs font-bold px-3 py-1 rounded-lg mt-1">3 series × 10 repeticiones</span>
                 </div>
               </div>
-              <button onclick="playExerciseDemo('Extensión', 'Mantén la espalda recta. Sube la pierna y cuenta hasta 3.')" class="text-primary-600 p-2 bg-primary-50 rounded-full hover:bg-primary-100">
-                <i data-lucide="play" class="w-6 h-6"></i>
+              <button onclick="playExerciseDemo('Extensión', 'Mantén la espalda recta contra el respaldo. Levanta un pie lentamente hasta estirar la pierna, cuenta hasta 3 y bájalo suavemente.')" class="text-primary-600 p-2 bg-primary-50 rounded-full hover:bg-primary-100 text-xs font-bold flex items-center gap-1">
+                <i data-lucide="play-circle" class="w-5 h-5"></i> Ver paso a paso
               </button>
             </div>
             <button onclick="toggleExercise(1)" id="btn-ex-1" class="w-full py-4 rounded-xl border-2 border-slate-300 bg-slate-50 text-slate-600 font-black text-lg hover:bg-emerald-50 hover:text-emerald-700 transition-all flex justify-center items-center gap-2">
-              <i data-lucide="circle" class="w-5 h-5"></i> Marcar como Hecho
+              <i data-lucide="circle" class="w-5 h-5"></i> Registrar como Terminado
             </button>
           </div>
         </div>
@@ -450,15 +478,15 @@
         <!-- PESTAÑA: DIAGNÓSTICO -->
         <div id="tab-diagnostico" class="space-y-6 hidden">
           <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm">
-            <h3 class="text-lg font-bold text-slate-900 mb-4 border-b pb-4">Detalles Clínicos de la Evaluación</h3>
+            <h3 class="text-lg font-bold text-slate-900 mb-4 border-b pb-4">Detalles de tu Evaluación</h3>
             <div class="space-y-4 text-sm">
               <div>
-                <span class="block text-xs font-bold text-slate-500 uppercase mb-1">Diagnóstico Principal</span>
-                <p class="font-semibold text-slate-800" id="portalDiagTitle">Gonartrosis bilateral limitante.</p>
+                <span class="block text-xs font-bold text-slate-500 uppercase mb-1">Tu Diagnóstico Principal</span>
+                <p class="font-semibold text-slate-800" id="portalDiagTitle">Desgaste articular en rodillas (Gonartrosis) limitante para la marcha diaria.</p>
               </div>
               <div>
-                <span class="block text-xs font-bold text-slate-500 uppercase mb-1">Plan Terapéutico</span>
-                <p class="text-slate-700">Ejercicios de bajo impacto. Monitoreo por Asistente Virtual 2 veces a la semana.</p>
+                <span class="block text-xs font-bold text-slate-500 uppercase mb-1">Lo que vamos a lograr con tu plan</span>
+                <p class="text-slate-700">Reforzaremos los músculos de tus piernas para que tus rodillas soporten menos peso. Buscaremos que te puedas poner de pie desde tu cama o silla con mucha más seguridad.</p>
               </div>
             </div>
           </div>
@@ -473,7 +501,7 @@
               </div>
               <div>
                 <h3 class="font-bold text-white text-sm">Asistente Kine AI</h3>
-                <p class="text-xs text-primary-200">Base de conocimientos clínica 24/7</p>
+                <p class="text-xs text-primary-200">Base de conocimientos clínicos 24/7</p>
               </div>
             </div>
             
@@ -484,19 +512,19 @@
                   <i data-lucide="bot" class="w-4 h-4"></i>
                 </div>
                 <div class="bg-white p-3 rounded-2xl rounded-tl-none border border-slate-200 text-xs text-slate-700 shadow-sm">
-                  Hola María Elena. Soy tu asistente virtual. Puedo responder dudas sobre tus ejercicios, recomendarte posturas o explicarte términos de tu pauta. ¿En qué te ayudo hoy?
+                  Hola María Elena. Soy tu asistente clínico virtual. Estoy aquí para responder dudas rápidas sobre tus ejercicios, aconsejarte sobre seguridad o explicarte conceptos de tu pauta. ¿En qué te puedo orientar hoy?
                 </div>
               </div>
               <!-- Preguntas sugeridas -->
               <div class="ml-10 space-y-2">
-                <button class="block w-full text-left bg-white border border-primary-200 text-primary-700 text-xs p-2 rounded-xl hover:bg-primary-50">¿Qué pasa si me duele al hacer la serie 2?</button>
-                <button class="block w-full text-left bg-white border border-primary-200 text-primary-700 text-xs p-2 rounded-xl hover:bg-primary-50">Solicitar Kinesiólogo a Domicilio</button>
+                <button class="block w-full text-left bg-white border border-primary-200 text-primary-700 font-semibold text-xs p-2.5 rounded-xl hover:bg-primary-50">¿Qué pasa si me duele la rodilla al hacer un ejercicio?</button>
+                <button class="block w-full text-left bg-white border border-primary-200 text-primary-700 font-semibold text-xs p-2.5 rounded-xl hover:bg-primary-50">¿Es normal sentir los músculos cansados después de la sesión?</button>
               </div>
             </div>
 
             <div class="p-3 bg-white border-t border-slate-200 flex gap-2">
-              <input type="text" placeholder="Escribe tu duda aquí..." class="flex-1 text-xs px-3 py-2 rounded-xl border border-slate-300 outline-none focus:ring-1 focus:ring-primary-500" />
-              <button class="bg-primary-600 text-white p-2.5 rounded-xl"><i data-lucide="send" class="w-4 h-4"></i></button>
+              <input type="text" placeholder="Escribe tu consulta aquí..." class="flex-1 text-xs px-3 py-2 rounded-xl border border-slate-300 outline-none focus:ring-1 focus:ring-primary-500" />
+              <button class="bg-primary-600 text-white p-2.5 rounded-xl hover:bg-primary-700"><i data-lucide="send" class="w-4 h-4"></i></button>
             </div>
           </div>
         </div>
@@ -505,7 +533,7 @@
     </div>
 
     <!-- ==========================================
-         SECCIÓN 4: VISTA KINESIÓLOGO (EMBUDO TRIAGE)
+         SECCIÓN 4: VISTA KINESIÓLOGO (GESTIÓN DE PACIENTES)
          ========================================== -->
     <div id="section-kine-admin" class="hidden py-10 bg-slate-50 min-h-[85vh]">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -513,66 +541,66 @@
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
           <div>
             <h2 class="text-3xl font-black text-slate-900 flex items-center gap-3">
-              <i data-lucide="layout-dashboard" class="w-8 h-8 text-primary-600"></i> Panel Clínico
+              <i data-lucide="layout-dashboard" class="w-8 h-8 text-primary-600"></i> Panel Clínico Interno
             </h2>
-            <p class="text-sm text-slate-500">Gestión del Embudo de Pacientes</p>
+            <p class="text-sm text-slate-500">Gestión de Pacientes, Evaluaciones y Emisión de Pautas</p>
           </div>
           <button onclick="simulateLogin('patient')" class="bg-slate-900 text-white font-bold px-5 py-2.5 rounded-xl hover:bg-slate-800 transition-all">
-            Ir a Vista Paciente
+            Simular Vista de Paciente
           </button>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           
           <!-- COLUMNA 1: NUEVOS (Por Evaluar) -->
-          <div class="bg-slate-200/50 rounded-3xl p-4 flex flex-col gap-4">
+          <div class="bg-slate-200/50 rounded-3xl p-4 flex flex-col gap-4 border border-slate-200">
             <h3 class="font-bold text-slate-700 uppercase text-xs flex justify-between">
-              <span>1. Por Evaluar (Nuevos)</span>
+              <span>1. Nuevas Evaluaciones Pendientes</span>
               <span class="bg-slate-300 text-slate-800 px-2 rounded-full">1</span>
             </h3>
             
             <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 hover:shadow-md transition-all">
               <div class="flex justify-between items-start mb-2">
-                <span class="text-[10px] bg-rose-100 text-rose-800 font-bold px-2 py-0.5 rounded">Prioridad Alta</span>
+                <span class="text-[10px] bg-rose-100 text-rose-800 font-bold px-2 py-0.5 rounded">Revisión Urgente</span>
                 <span class="text-[10px] font-bold text-slate-500">Hace 2 hrs</span>
               </div>
               <h4 class="font-bold text-slate-900">Don Hernán Valdés</h4>
               <p class="text-xs text-slate-500 mb-3">81 años · Dolor Lumbar (EVA 8)</p>
-              <button class="w-full bg-primary-600 hover:bg-primary-700 text-white font-bold text-xs py-2 rounded-xl">Crear Diagnóstico</button>
+              <button class="w-full bg-primary-600 hover:bg-primary-700 text-white font-bold text-xs py-2.5 rounded-xl shadow-sm">Elaborar y Enviar Diagnóstico (Gratis)</button>
             </div>
           </div>
 
           <!-- COLUMNA 2: ENVIADOS (Esperando Pago) -->
-          <div class="bg-slate-200/50 rounded-3xl p-4 flex flex-col gap-4">
+          <div class="bg-slate-200/50 rounded-3xl p-4 flex flex-col gap-4 border border-slate-200">
             <h3 class="font-bold text-slate-700 uppercase text-xs flex justify-between">
-              <span>2. Diagnóstico Enviado</span>
+              <span>2. Diagnósticos Enviados (Pendiente de Pago)</span>
               <span class="bg-slate-300 text-slate-800 px-2 rounded-full">1</span>
             </h3>
             
-            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 opacity-80">
+            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4 opacity-75">
               <div class="flex justify-between items-start mb-2">
-                <span class="text-[10px] bg-amber-100 text-amber-800 font-bold px-2 py-0.5 rounded flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3"></i> Esperando Pago</span>
+                <span class="text-[10px] bg-amber-100 text-amber-800 font-bold px-2 py-0.5 rounded flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3"></i> Esperando validación de pago</span>
               </div>
               <h4 class="font-bold text-slate-900">Sra. Carmen López</h4>
               <p class="text-xs text-slate-500 mb-3">68 años · Manguito Rotador</p>
-              <button class="w-full bg-slate-100 text-slate-500 font-bold text-xs py-2 rounded-xl cursor-not-allowed">Pauta Bloqueada</button>
+              <button class="w-full bg-slate-100 text-slate-400 font-bold text-xs py-2.5 rounded-xl cursor-not-allowed">Elaborar Pauta (Bloqueado)</button>
             </div>
           </div>
 
           <!-- COLUMNA 3: ACTIVOS (Pagados) -->
-          <div class="bg-slate-200/50 rounded-3xl p-4 flex flex-col gap-4">
+          <div class="bg-slate-200/50 rounded-3xl p-4 flex flex-col gap-4 border border-slate-200">
             <h3 class="font-bold text-slate-700 uppercase text-xs flex justify-between">
-              <span>3. Pautas Activas</span>
+              <span>3. Pautas Activas (Pagadas)</span>
               <span class="bg-mint-200 text-mint-800 px-2 rounded-full">1</span>
             </h3>
             
             <div class="bg-white rounded-2xl border border-mint-200 shadow-sm p-4 ring-1 ring-mint-400">
               <div class="flex justify-between items-start mb-2">
-                <span class="text-[10px] bg-mint-100 text-mint-800 font-bold px-2 py-0.5 rounded">Plan Premium Activo</span>
+                <span class="text-[10px] bg-mint-100 text-mint-800 font-bold px-2 py-0.5 rounded flex items-center gap-1"><i data-lucide="check-circle-2" class="w-3 h-3"></i> Plan Activo</span>
               </div>
               <h4 class="font-bold text-slate-900">María Elena Contreras</h4>
               <p class="text-xs text-slate-500 mb-3">74 años · Gonartrosis</p>
-              <button onclick="showSection('portal')" class="w-full bg-mint-50 hover:bg-mint-100 text-mint-700 font-bold text-xs py-2 rounded-xl">Revisar Progreso</button>
+              <button onclick="showSection('portal')" class="w-full bg-mint-50 hover:bg-mint-100 text-mint-700 font-bold text-xs py-2.5 rounded-xl">Supervisar Progreso</button>
             </div>
           </div>
 
@@ -595,7 +623,7 @@
         <i data-lucide="user-check" class="w-8 h-8"></i>
       </div>
       <h3 class="text-xl font-black text-slate-900 mb-2">Ingresar a KineSenior</h3>
-      <p class="text-sm text-slate-500 mb-6">Ingresa tu RUT o Correo para acceder a tu perfil seguro.</p>
+      <p class="text-sm text-slate-500 mb-6">Ingresa tu RUT o Correo electrónico para acceder a tu perfil seguro.</p>
       
       <div class="space-y-4 mb-6">
         <input type="text" placeholder="Ej: 12.345.678-9" class="w-full px-4 py-3 rounded-xl border border-slate-300 outline-none text-slate-800 text-sm text-center" />
@@ -604,12 +632,43 @@
       <div class="border-t border-slate-200 pt-4 mt-2">
         <p class="text-[10px] uppercase font-bold text-slate-400 mb-3 tracking-wider">Simulador Prototipo</p>
         <div class="grid grid-cols-2 gap-2">
-          <button onclick="simulateLogin('patient')" class="bg-slate-100 text-slate-700 font-bold text-xs py-3 rounded-xl hover:bg-slate-200">Simular Paciente</button>
-          <button onclick="simulateLogin('kine')" class="bg-primary-50 text-primary-700 font-bold text-xs py-3 rounded-xl hover:bg-primary-100">Simular Kine</button>
+          <button onclick="simulateLogin('patient')" class="bg-slate-100 text-slate-700 font-bold text-xs py-3 rounded-xl hover:bg-slate-200">Simular Paciente Pagado</button>
+          <button onclick="simulateLogin('kine')" class="bg-primary-50 text-primary-700 font-bold text-xs py-3 rounded-xl hover:bg-primary-100">Simular Profesional</button>
         </div>
       </div>
     </div>
   </div>
+
+  <div id="generalModal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-7 shadow-2xl border border-slate-200">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-200 mb-4">
+        <h4 class="font-bold text-base text-slate-900" id="modalTitle">Instrucción de Ejercicio</h4>
+        <button onclick="closeGeneralModal()" class="text-slate-400 hover:text-slate-700">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <div class="space-y-4">
+        <div class="w-full h-40 bg-slate-100 rounded-2xl flex flex-col items-center justify-center text-slate-400 border border-slate-200 p-4 text-center">
+          <i data-lucide="play-circle" class="w-12 h-12 text-primary-500 mb-2"></i>
+          <span class="text-xs font-semibold text-slate-600">Video de Guía Clínica</span>
+        </div>
+        <p class="text-sm text-slate-700 leading-relaxed" id="modalBodyText">
+          Instrucciones detalladas del ejercicio.
+        </p>
+      </div>
+      <div class="mt-6 text-right">
+        <button onclick="closeGeneralModal()" class="bg-primary-600 hover:bg-primary-700 text-white font-bold text-xs px-5 py-2.5 rounded-xl">
+          Cerrar Instrucción
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800 text-sm mt-auto">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <span>© 2026 KineSenior. Vitalidad y cuidado en casa. Todos los derechos reservados.</span>
+    </div>
+  </footer>
 
   <script>
     const appState = {
@@ -646,6 +705,7 @@
       document.getElementById('mobileMenu').classList.toggle('hidden');
     }
 
+    // Formularios del Cuestionario
     function startQuestionnaire() {
       appState.currentStep = 1; updateStepUI(); showSection('questionnaire');
     }
@@ -678,18 +738,20 @@
       
       const nxt = document.getElementById('nextStepBtn');
       nxt.innerHTML = appState.currentStep === appState.totalSteps 
-        ? `<span>Enviar para Evaluación</span><i data-lucide="check" class="w-4 h-4"></i>`
+        ? `<span>Enviar para Diagnóstico Gratis</span><i data-lucide="check" class="w-4 h-4"></i>`
         : `<span>Siguiente</span><i data-lucide="arrow-right" class="w-4 h-4"></i>`;
       lucide.createIcons();
     }
     function updatePainDisplay(val) { document.getElementById('evaValueDisplay').innerText = `${val} / 10`; }
+    
     function finishQuestionnaire() {
       const name = document.getElementById('patientName').value.trim();
       if(name) document.getElementById('portalPatientName').innerText = name;
-      alert("¡Ficha enviada con éxito! Un kinesiólogo te enviará tu diagnóstico gratuito en 2 a 3 días hábiles.");
+      alert("¡Evaluación enviada exitosamente! Recibirás tu diagnóstico gratuito en tu correo. Si decides avanzar, la creación de tu pauta personalizada de ejercicios tardará de 2 a 3 días hábiles tras confirmar tu pago.");
       showSection('landing');
     }
 
+    // Tabs del Portal Paciente
     function switchPatientTab(tabName) {
       document.getElementById('tab-rutina').classList.add('hidden');
       document.getElementById('tab-diagnostico').classList.add('hidden');
@@ -706,6 +768,7 @@
       document.getElementById(`tab-btn-${tabName}`).className = activeClass;
     }
 
+    // Funciones Ejercicios
     function toggleExercise(num) {
       const idx = num - 1;
       appState.completedExercises[idx] = !appState.completedExercises[idx];
@@ -713,13 +776,24 @@
       const btn = document.getElementById(`btn-ex-${num}`);
 
       if (isDone) {
-        btn.innerHTML = `<i data-lucide="check-circle-2" class="w-6 h-6"></i> Completado`;
+        btn.innerHTML = `<i data-lucide="check-circle-2" class="w-5 h-5"></i> Terminado por hoy`;
         btn.className = 'w-full py-4 rounded-xl border-2 border-emerald-500 bg-emerald-50 text-emerald-700 font-black text-lg transition-all flex justify-center items-center gap-2';
       } else {
-        btn.innerHTML = `<i data-lucide="circle" class="w-5 h-5"></i> Marcar como Hecho`;
+        btn.innerHTML = `<i data-lucide="circle" class="w-5 h-5"></i> Registrar como Terminado`;
         btn.className = 'w-full py-4 rounded-xl border-2 border-slate-300 bg-slate-50 text-slate-600 font-black text-lg hover:bg-emerald-50 hover:text-emerald-700 transition-all flex justify-center items-center gap-2';
       }
       lucide.createIcons();
+    }
+
+    function playExerciseDemo(title, description) {
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalBodyText').innerText = description;
+      document.getElementById('generalModal').classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    function closeGeneralModal() {
+      document.getElementById('generalModal').classList.add('hidden');
     }
   </script>
 </body>
